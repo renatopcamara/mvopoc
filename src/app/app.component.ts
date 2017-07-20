@@ -51,9 +51,9 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.backand.init({
-        appName: 'Proj1',
-        signUpToken: 'd28a16f6-ecbc-46f1-a7be-efbdc45f1e30',
-        anonymousToken: 'c406c73c-3688-4828-a734-004ac04b04d0',
+        appName: 'mvopoc',
+        signUpToken: '8efa1a4f-32d8-435c-9e49-7d54bb4991e1',
+        anonymousToken: '38396332-f6e2-48d8-950c-bd6a2e4f1633',
         runSocket: true,
         mobilePlatform: 'ionic'
       });
