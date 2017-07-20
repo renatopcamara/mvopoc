@@ -28,7 +28,8 @@ export class MyApp {
     public platform: Platform,
     public statusBar: StatusBar,
     public splashScreen: SplashScreen,
-    public backand: BackandService) {
+    public backand: BackandService)
+    {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -38,26 +39,32 @@ export class MyApp {
       { title: 'Produtos', component: Produtos },
       { title: 'Meu Estoque', component: Meuestoque },
       { title: 'Vou Vender', component: Vouvender },
-      { title: 'Meus Clientes', component: Meusclientes },
-      { title: 'List', component: ListPage }
+      { title: 'Meus Clientes', component: Meusclientes }
     ];
 
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
+  initializeApp()
+  {
+    this.platform.ready().then
+    (() =>
+      {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.backand.init({
-        appName: 'mvopoc',
-        signUpToken: '8efa1a4f-32d8-435c-9e49-7d54bb4991e1',
-        anonymousToken: '38396332-f6e2-48d8-950c-bd6a2e4f1633',
-        runSocket: true,
-        mobilePlatform: 'ionic'
-      });
-    });
+
+      this.backand.init
+        ({
+          appName: 'mvopoc',
+          signUpToken: '8efa1a4f-32d8-435c-9e49-7d54bb4991e1',
+          anonymousToken: '38396332-f6e2-48d8-950c-bd6a2e4f1633',
+          runSocket: true,
+          mobilePlatform: 'ionic'
+        });
+
+      }
+    );
   }
 
   openPage(page) {

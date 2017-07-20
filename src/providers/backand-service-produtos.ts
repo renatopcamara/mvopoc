@@ -36,25 +36,27 @@ export const ERRORS = {
     }
 }());
 
-import { Observable, BehaviorSubject, Subject} from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Http,Headers, URLSearchParams} from '@angular/http';
+import 'rxjs/add/operator/map';
+import { Observable, BehaviorSubject, Subject} from 'rxjs';
 import 'rxjs/add/operator/map';
 import * as io from 'socket.io-client';
 
 /*
-
+  Generated class for the BackandServiceProdutos provider.
 */
 
 @Injectable()
-export class BackandService {
-
+export class BackandServiceProdutos
+{
   private api_url: string = 'https://api.backand.com';
-  private socialProviders: any = {
-      github: {name: 'github', label: 'Github', url: 'www.github.com', css: 'github', id: 1},
-      google: {name: 'google', label: 'Google', url: 'www.google.com', css: 'google-plus', id: 2},
-      facebook: {name: 'facebook', label: 'Facebook', url: 'www.facebook.com', css: 'facebook', id: 3},
-      twitter: {name: 'twitter', label: 'Twitter', url: 'www.twitter.com', css: 'twitter', id: 4}
+  private socialProviders: any =
+  {
+    github: {name: 'github', label: 'Github', url: 'www.github.com', css: 'github', id: 1},
+    google: {name: 'google', label: 'Google', url: 'www.google.com', css: 'google-plus', id: 2},
+    facebook: {name: 'facebook', label: 'Facebook', url: 'www.facebook.com', css: 'facebook', id: 3},
+    twitter: {name: 'twitter', label: 'Twitter', url: 'www.twitter.com', css: 'twitter', id: 4}
   };
   private dummyReturnAddress: string = 'http://www.backandkuku.com';
 
@@ -76,16 +78,18 @@ export class BackandService {
   private statusLogin: Subject<EVENTS>;
   private socket: SocketIOClient.Socket;
 
-  constructor(public http: Http) {
-    console.log('Hello BackandService Provider');
-    if (this.setAuthenticationState()){
-            this.loginSocket(this.auth_token.header_value,
-                this.anonymousToken, this.app_name);
-        }
-        else{
-            this.auth_token = {header_name: '', header_value: ''};
-        }
+  constructor(public http: Http)
+  {
+    console.log('Hello BackandServiceProdutos Provider');
+    if (this.setAuthenticationState())
+    {
+      this.loginSocket(this.auth_token.header_value,
+      this.anonymousToken, this.app_name);
+    } else
+    {
+      this.auth_token = {header_name: '', header_value: ''};
     }
+  }
 
     // configuration of SDK
     public setIsMobile(isMobile: boolean) {
@@ -576,8 +580,10 @@ export class BackandService {
         return this.username;
     }
 
-    public getUserDetails(force: boolean) {
-        if (force){
+    public getUserDetails(force: boolean)
+    {
+      if (force)
+      {
             let $obs = this.http.get(this.api_url + '/api/account/profile', {
                 headers: this.authHeader
             })
@@ -594,13 +600,13 @@ export class BackandService {
                 () => console.log('Got User Details'));
 
             return $obs;
-        }
-        else{
+      } else
+      {
             let userDetails = localStorage.getItem('user');
             let promise = Promise.resolve(userDetails ? JSON.parse(userDetails) : null);
             let $obs = Observable.fromPromise(promise);
             return $obs;
-        }
+      }
 
     }
 
@@ -695,5 +701,5 @@ export class BackandService {
 
     public logError(err) {
         console.error('Error: ' + err);
+    }
   }
-}

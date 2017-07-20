@@ -18,4 +18,16 @@
 
 <ion-content padding>
 
+  <p>Lista de Produtos Hinode</p>
+
+  <ion-list>
+    <button ion-item *ngFor="let item of items" (click)="selecionaUsuario(item.Nome)">
+      <p>Código Hinode: {{ item.CodigoHinode }}</p>
+      <p>Nome: {{ item.Nome }}</p>
+      <p>Preço: {{ item.Preco  }}</p>
+      <p>Custo: {{ item.Custo }}</p>
+      <p>Status: {{ item.Status}}</p>
+    </button>
+  </ion-list>
+
 </ion-content>
