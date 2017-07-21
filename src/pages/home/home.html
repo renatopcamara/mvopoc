@@ -3,13 +3,25 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title text-center>Home</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
+  <p>Bem vindo Fulano ao nosso sistema.</p>
+  <p></p>
+  <p>Seu primeiro passo é entrar no sistema. Para isso clique no botão abaixo</p>
+  <div text-center>
+    <button ion-button icon-left clear (click)="showUsuario()">
+        <ion-icon name="log-in"></ion-icon>
+        Registre-se
+    </button>
+  </div>
 
-  <h3>MVO POC</h3>
-  <p>Bem vindo Fulano de volta ao nosso sistema.</p>
-
+  <p>Através do Menu lateral esquerdo <ion-icon name="menu"></ion-icon> voce deve fazer suas opções de navegação.</p>
+  <p>Para criar sua rede de consultores clique no icone <ion-icon name="add"></ion-icon > no rodapé desta página.</p>
 </ion-content>
+
+<ion-footer>
+    <button ion-button clear (click)="showRede()"><ion-icon name="add"></ion-icon></button>
+</ion-footer>

@@ -35,14 +35,13 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Usuários', component: Usuarios },
-      { title: 'Produtos', component: Produtos },
       { title: 'Meu Estoque', component: Meuestoque },
       { title: 'Vou Vender', component: Vouvender },
-      { title: 'Meus Clientes', component: Meusclientes }
-    ];
-
-  }
+      { title: 'Meus Clientes', component: Meusclientes },
+      { title: 'Log In', component: Usuarios },
+      { title: 'Produtos Hinode', component: Produtos }
+      ];
+    }
 
   initializeApp()
   {
@@ -62,7 +61,6 @@ export class MyApp {
           runSocket: true,
           mobilePlatform: 'ionic'
         });
-
       }
     );
   }
