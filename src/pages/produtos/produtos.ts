@@ -10,15 +10,14 @@ export class Produtos {
 
 /* Campos da Tabela Produtos */
   id: number;
-  CodigoHinode: string = '';
   Nome: string;
   Preco: number;
   Custo: number;
   Status: string;
   creadetAt: Date;
   updatedAt: Date;
-  
-  public items:any[] = [];
+
+  items:any[] = [];
   searchQuery: string;
   username:string = '';
   password:string = '';
@@ -30,40 +29,14 @@ export class Produtos {
   email: string = '';
 
   constructor(
-  public navCtrl: NavController,
-  public navParams: NavParams,
-  public backand: BackandService)
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public backand: BackandService)
   {
-    this.searchQuery = '';
-    let that = this;
-    this.backand.on("items_updated", (res: any) =>
-    {
-      let a = res.data as any[];
-      let newItem = {};
-      a.forEach((kv)=> newItem[kv.Key] = kv.Value);
-      that.items.unshift(newItem);
-    }
-    );
-    this.backand.user.getUserDetails().then
-    (
-      (res: any) =>
-      {
-        if(res.data)
-        {
-          this.loggedInUser = res.data.username;
-          this.email = res.data.username;
-          this.auth_status = 'OK';
-          this.auth_type = res.data.token_type == 'Anonymous' ? 'Anonymous' : 'Token';
-        }
-      },(err: any) =>
-        {
-          this.loggedInUser = null;
-          this.auth_status = null;
-          this.auth_type = null;
-        }
-      );
-      this.getItems();
-    }
+
+    this.getItems();
+
+  }
 
   public getItems()
   {

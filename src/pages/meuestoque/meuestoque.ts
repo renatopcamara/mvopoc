@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { App, ViewController, NavController, NavParams, AlertController } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
+
+import { Vouvender } from '../vouvender/vouvender';
 
 @Component({
   selector: 'page-meuestoque',
@@ -35,7 +37,8 @@ export class Meuestoque {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public backand: BackandService)
+    public backand: BackandService,
+    public alertCtrl: AlertController)
     {
 
       this.searchQuery = '';
@@ -81,14 +84,32 @@ export class Meuestoque {
       );
     }
 
-  selecionaUsuario(nome:string)
+  VouVender(nomeProduto)
   {
-    console.log(nome)
-    this.NomedoUsuario = '' + nome ;
+    this.navCtrl.push(Vouvender,'nome')
+  }
+
+  Chegou(nomeProduto)
+  {
+    let alert = this.alertCtrl.create
+    ({
+      title: 'Chegou',
+      subTitle: ' ' + nomeProduto,
+      buttons: ['OK']
+    });
+    alert.present();
+    this.getItems();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Meuestoque');
   }
+
+  ionViewDidEnter() {
+    console.log('ionViewDidEnter Meuestoque');
+    this.getItems();
+  }
+
+
 
 }

@@ -13,6 +13,9 @@
 
   <ion-list>
     <ion-list-header>
+      <ion-searchbar
+        [(ngModel)]="myInput">
+      </ion-searchbar>
     </ion-list-header>
 
     <ion-item-sliding *ngFor="let item of items">
@@ -21,11 +24,11 @@
         <h2>Quantidade: {{ item.Quantidade  }}</h2>
       </ion-item>
       <ion-item-options>
-        <button ion-button color="primary" icon-start>
+        <button ion-button color="primary" icon-start (click)="VouVender(item.NomedoProduto)">
           <ion-icon name="cart"></ion-icon>
           Vender
         </button>
-        <button ion-button color="secondary" icon-start>
+        <button ion-button color="secondary" icon-start (click)="Chegou(item.NomedoProduto)">
           <ion-icon name="checkbox"></ion-icon>
           Chegou
         </button>

@@ -25,7 +25,8 @@ import { BackandService } from '@backand/angular2-sdk';
     Produtos,
     Meuestoque,
     Vouvender,
-    Meusclientes
+    Meusclientes,
+    ListPage
   ],
   imports: [
     BrowserModule,
@@ -39,7 +40,8 @@ import { BackandService } from '@backand/angular2-sdk';
     Produtos,
     Meuestoque,
     Vouvender,
-    Meusclientes
+    Meusclientes,
+    ListPage
   ],
   providers: [
     StatusBar,
