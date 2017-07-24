@@ -420,7 +420,7 @@ export class BackandService {
     }
 
     public getList(object: string,
-        pageSize: number = 200,
+        pageSize: number = null,
         pageNumber: number = null,
         filter: any = null,
         sort: any = null,

@@ -19,11 +19,15 @@
 <ion-content padding>
 
 <p>Bem Vindo a página de vendas</p>
-
+<p>Produto</p>
+<p>Quantidade</p>
 <ion-list>
   <ion-item>
+    <ion-label>Produto</ion-label>
+  </ion-item>
+  <ion-item>
     <ion-label>Cliente</ion-label>
-    <ion-select [(ngModel)]="Nome">
+    <ion-select [(ngModel)]="ome">
       <ion-option value="nes">NES</ion-option>
       <ion-option value="n64">Nintendo64</ion-option>
       <ion-option value="ps">PlayStation</ion-option>
@@ -36,3 +40,9 @@
 
 
 </ion-content>
+
+<ion-footer>
+    <button ion-button clear (click)="addCliente()">
+        <ion-icon name="add"></ion-icon>
+    </button>
+</ion-footer>

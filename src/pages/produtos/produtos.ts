@@ -28,6 +28,8 @@ export class Produtos {
   NomedoUsuario: string = '';
   email: string = '';
 
+  api_url: string = 'https://api.backand.com';
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -38,9 +40,15 @@ export class Produtos {
 
   }
 
+
+
   public getItems()
   {
-    this.backand.object.getList('Produtos').then
+    let params =
+    {
+      pageSize: 200
+    }
+    this.backand.object.getList('Produtos', params).then
     ((res: any) =>
         {
           this.items = res.data;

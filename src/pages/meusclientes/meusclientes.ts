@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the Meusclientes page.
- *
- * See http://ionicframework.com/docs/components/#navigation for more info
- * on Ionic pages and navigation.
- */
+import { BackandService } from '@backand/angular2-sdk';
 
 @Component({
   selector: 'page-meusclientes',
@@ -14,11 +8,108 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class Meusclientes {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  /* Campos da Tabela Estoques */
+  id: number;
+  nome: string;
+  email: string;
+  whatsapp: string;
+
+  public items:any[] = [];
+  searchQuery: string;
+  username:string = '';
+  password:string = '';
+  auth_type:string = "N/A";
+  is_auth_error:boolean = false;
+  auth_status:string = null;
+  loggedInUser: string = '';
+  NomedoUsuario: string = '';
+
+  constructor(
+  public navCtrl: NavController,
+  public navParams: NavParams,
+  public backand: BackandService)
+  {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Meusclientes');
   }
 
+  ionViewDidEnter() {
+    this.getItems();
+  }
+
+  public getItems()
+  {
+    this.backand.object.getList('Clientes').then
+    ((res: any) =>
+        {
+          this.items = res.data;
+          console.log('itens lidos....');
+        },(err: any) =>
+        {
+          alert(err.data);
+        }
+    );
+  }
+
+  public novoItem()
+  {
+    let item =
+    {
+      Nome: this.nome,
+      Email: this.email,
+      Whatsapp: this.whatsapp,
+    };
+    console.log(item)
+    if (item.Whatsapp && item.Nome)
+      this.backand.object.create('clientes',item).then
+      ((res: any) =>
+          {
+            console.log('salvei...');
+            this.id=0;
+            this.nome="";
+            this.email="";
+            this.whatsapp="";
+          },(err: any) =>
+          {
+            alert(err.data);
+          }
+      );
+  }
+
+  public carregaDados(registro)
+  {
+    this.id=registro.id;
+    this.nome=registro.nome;
+    this.email=registro.email;
+    this.whatsapp=registro.whatsapp;
+    console.log('registros de atualização' + registro.id)
+  }
+
+  public atualizar()
+  {
+    let item =
+    {
+      Nome: this.nome,
+      Email: this.email,
+      Whatsapp: this.whatsapp,
+    };
+    console.log('autalizando o ID ' + this.id)
+    if (item.Whatsapp && item.Nome)
+      this.backand.object.update('clientes', this.id, item).then
+      ((res: any) =>
+          {
+            console.log('atualizado...');
+            this.id=0;
+            this.nome="";
+            this.email="";
+            this.whatsapp="";
+          },(err: any) =>
+          {
+            alert(err.data);
+          }
+      );
+
+  }
 }
