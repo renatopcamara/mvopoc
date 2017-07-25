@@ -14,7 +14,9 @@
   <ion-list>
     <ion-list-header>
       <ion-searchbar
-        [(ngModel)]="myInput">
+        [(ngModel)]="searchQuery"
+        [showCancelButton]="shouldShowCancel"
+        (ionInput)="filterItems($event.target.value)">
       </ion-searchbar>
     </ion-list-header>
 

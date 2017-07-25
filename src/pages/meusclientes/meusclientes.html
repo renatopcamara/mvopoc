@@ -15,16 +15,12 @@
 
   <ion-list>
     <ion-item>
-      <ion-label floating>ID</ion-label>
-      <ion-input type="text" [(ngModel)]="id"></ion-input>
-    </ion-item>
-    <ion-item>
       <ion-label floating>Nome</ion-label>
       <ion-input type="text" [(ngModel)]="nome"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>Whatsapp</ion-label>
-      <ion-input type="text" [(ngModel)]="whatsapp"></ion-input>
+      <ion-input type="tel" [(ngModel)]="whatsapp"></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>E-Mail</ion-label>
@@ -33,16 +29,21 @@
   </ion-list>
 
 <button ion-button block (click)="novoItem()">Salvar</button>
-<button ion-button block (click)="atualizar()">Atualizar</button>
-<p></p>
 
-<ion-list>
-  <button ion-item *ngFor="let item of items" (click)="carregaDados(item)">
-    <p>ID: {{ item.id }}</p>
-    <p>Nome: {{ item.Nome }}</p>
-    <p>Email: {{ item.Email  }}</p>
-    <p>Whatsapp: {{ item.Whatsapp }}</p>
-  </button>
-</ion-list>
+  <ion-list>
+    <ion-item-sliding *ngFor="let item of items">
+      <ion-item>
+        <p>Nome: {{ item.Nome }}</p>
+        <p>Email: {{ item.Email  }}</p>
+        <p>Whatsapp: {{ item.Whatsapp }}</p>
+      </ion-item>
+      <ion-item-options>
+        <button ion-button color="danger" icon-start (click)="Deletar(item.id)">
+          <ion-icon name="trash"></ion-icon>
+          Apagar
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
 
 </ion-content>

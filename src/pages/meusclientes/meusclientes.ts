@@ -13,6 +13,7 @@ export class Meusclientes {
   nome: string;
   email: string;
   whatsapp: string;
+  Status: string;
 
   public items:any[] = [];
   searchQuery: string;
@@ -60,6 +61,7 @@ export class Meusclientes {
       Nome: this.nome,
       Email: this.email,
       Whatsapp: this.whatsapp,
+      Status: 'Ativo'
     };
     console.log(item)
     if (item.Whatsapp && item.Nome)
@@ -67,10 +69,11 @@ export class Meusclientes {
       ((res: any) =>
           {
             console.log('salvei...');
-            this.id=0;
+            this.id=null;
             this.nome="";
             this.email="";
             this.whatsapp="";
+            this.getItems();
           },(err: any) =>
           {
             alert(err.data);
@@ -85,6 +88,20 @@ export class Meusclientes {
     this.email=registro.email;
     this.whatsapp=registro.whatsapp;
     console.log('registros de atualização' + registro.id)
+  }
+
+  public Deletar(indice)
+  {
+    this.backand.object.remove('clientes', indice).then
+    ((res: any) =>
+        {
+          console.log('apagando indice '+ indice);
+          this.getItems();
+        },(err: any) =>
+        {
+          alert(err.data);
+        }
+    );
   }
 
   public atualizar()

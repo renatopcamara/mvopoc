@@ -70,19 +70,53 @@ export class Meuestoque {
       this.getItems();
     }
 
-    public getItems()
+  public getItems()
+  {
+    this.backand.object.getList('Estoques').then
+    ((res: any) =>
+        {
+          this.items = res.data;
+          console.log(this.items);
+        },(err: any) =>
+        {
+          alert(err.data);
+        }
+    );
+  }
+
+  public filterItems(searchbar)
+  {
+    // set q to the value of the searchbar
+    var q = searchbar;
+
+    // if the value is an empty string don't filter the items
+    if (!q || q.trim() == '')
     {
-      this.backand.object.getList('Estoques').then
-      ((res: any) =>
-          {
-            this.items = res.data;
-            console.log(this.items);
-          },(err: any) =>
-          {
-            alert(err.data);
-          }
+      return;
+    }
+    else
+    {
+      q = q.trim();
+    }
+    console.log('busca' + q);
+
+    let params =
+    {
+      filter: this.backand.helpers.filter.create('NomedoProduto', 'contains', q)
+    }
+    this.backand.object.getList('Estoques', params).then
+    ((res: any) =>
+        {
+          this.items = res.data;
+          console.log('passou no getlist com filtro');
+          this.navCtrl.getActive()
+        },(err: any) =>
+        {
+          alert(err.data);
+        }
       );
     }
+
 
   VouVender(nomeProduto)
   {
@@ -107,7 +141,7 @@ export class Meuestoque {
 
   ionViewDidEnter() {
     console.log('ionViewDidEnter Meuestoque');
-    this.getItems();
+    this.filterItems(this.searchQuery);
   }
 
 
