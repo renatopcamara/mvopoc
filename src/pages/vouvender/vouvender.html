@@ -17,23 +17,22 @@
 
 
 <ion-content padding>
-
-<p>Bem Vindo a página de vendas</p>
-<p>Produto</p>
-<p>Quantidade</p>
-{{NomedoUsuario}}
-
-<ion-list>
-  <ion-item>
-    <ion-label>Produto</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-label>Cliente</ion-label>
-    <ion-select [(ngModel)]="item">
-      <ion-option *ngFor="let item of items" value="item"></ion-option>
-    </ion-select>
-  </ion-item>
-</ion-list>
+  <ion-item-group>
+    <ion-item-divider color="light">Dados do Produto</ion-item-divider>
+    <ion-item>
+      <ion-input type="text" placeholder="Nome">{{ProdutoParaVender}}</ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input type="number" placeholder="Quantidade">Quantidade</ion-input>
+    </ion-item>
+    <ion-item-divider color="light">Dados do Cliente</ion-item-divider>
+    <ion-item>
+      <ion-label>Cliente</ion-label>
+      <ion-select [(ngModel)]="cli">
+        <ion-option *ngFor="let item of clientes" value="item.Nome">{{item.Nome}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-item-group>
 
 
 </ion-content>

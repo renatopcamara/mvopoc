@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
+import { Meuestoque } from '../meuestoque/meuestoque';
+import { Meusclientes } from '../meusclientes/meusclientes';
 
 @Component({
   selector: 'page-vouvender',
@@ -15,33 +17,24 @@ export class Vouvender {
   whatsapp: string;
   Status: string;
 
-  public items:any[] = [];
-  searchQuery: string;
-  username:string = '';
-  password:string = '';
-  auth_type:string = "N/A";
-  is_auth_error:boolean = false;
-  auth_status:string = null;
-  loggedInUser: string = '';
-  NomedoUsuario: string = '';
+  private clientes:any[] = [];
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
     public backand: BackandService)
   {
-    this.getItems();
-    this.NomedoUsuario="this.items.nome"
+    this.getItemsClientes();
   }
 
-  public getItems()
+  public getItemsClientes()
   {
     this.backand.object.getList('Clientes').then
     ((res: any) =>
         {
-          this.items = res.data;
+          this.clientes = res.data;
           console.log('itens lidos....');
-          console.log('Nome ' , this.items)
+          console.log('Nome ' , this.clientes)
         },(err: any) =>
         {
           alert(err.data);
@@ -49,8 +42,16 @@ export class Vouvender {
     );
   }
 
+  addCliente()
+  {
+    this.navCtrl.push(Meusclientes)
+  }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Vouvender');
+    console.log('ionViewDidLoad Vouvender: ');
   }
 
+  ionViewDidEnter() {
+    console.log('ionViewDidEnter Meuestoque');
+    this.getItemsClientes();
+  }
 }

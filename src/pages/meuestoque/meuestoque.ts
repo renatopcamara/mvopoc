@@ -23,7 +23,7 @@ export class Meuestoque {
   CodUsuario: string;
   Status: string;
 
-  public items:any[] = [];
+  private items:any[] = [];
   searchQuery: string;
   username:string = '';
   password:string = '';
@@ -33,6 +33,7 @@ export class Meuestoque {
   loggedInUser: string = '';
   NomedoUsuario: string = '';
   email: string = '';
+  public ProdutoParaVender: string;
 
   constructor(
     public navCtrl: NavController,
@@ -67,10 +68,10 @@ export class Meuestoque {
           this.auth_type = null;
         }
       );
-      this.getItems();
+      this.getItemsMeuEstoque();
     }
 
-  public getItems()
+  public getItemsMeuEstoque()
   {
     this.backand.object.getList('Estoques').then
     ((res: any) =>
@@ -84,7 +85,7 @@ export class Meuestoque {
     );
   }
 
-  public filterItems(searchbar)
+  public filterItemsMeuEstoque(searchbar)
   {
     // set q to the value of the searchbar
     var q = searchbar;
@@ -120,7 +121,8 @@ export class Meuestoque {
 
   VouVender(nomeProduto)
   {
-    this.navCtrl.push(Vouvender,'nome')
+    this.ProdutoParaVender = nomeProduto;
+    this.navCtrl.push(Vouvender)
   }
 
   Chegou(nomeProduto)
@@ -132,7 +134,7 @@ export class Meuestoque {
       buttons: ['OK']
     });
     alert.present();
-    this.getItems();
+    this.filterItemsMeuEstoque(this.searchQuery);
   }
 
   ionViewDidLoad() {
@@ -141,7 +143,7 @@ export class Meuestoque {
 
   ionViewDidEnter() {
     console.log('ionViewDidEnter Meuestoque');
-    this.filterItems(this.searchQuery);
+    this.filterItemsMeuEstoque(this.searchQuery);
   }
 
 
