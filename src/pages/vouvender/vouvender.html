@@ -18,27 +18,39 @@
 
 <ion-content padding>
   <ion-item-group>
-    <ion-item-divider color="light">Dados do Produto</ion-item-divider>
-    <ion-item>
-      <ion-input type="text" placeholder="Nome">{{ProdutoParaVender}}</ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-input type="number" placeholder="Quantidade">Quantidade</ion-input>
-    </ion-item>
     <ion-item-divider color="light">Dados do Cliente</ion-item-divider>
-    <ion-item>
-      <ion-label>Cliente</ion-label>
-      <ion-select [(ngModel)]="cli">
-        <ion-option *ngFor="let item of clientes" value="item.Nome">{{item.Nome}}</ion-option>
-      </ion-select>
-    </ion-item>
+      <ion-item>
+        <ion-label>Cliente</ion-label>
+        <ion-select [(ngModel)]="cliente">
+          <ion-option *ngFor="let item of clientes" value={{item.Nome}}>{{item.Nome}}</ion-option>
+        </ion-select>
+      </ion-item>
+    <ion-item-divider color="light">Dados do Produto</ion-item-divider>
+      <ion-item>
+        <ion-input type="text" placeholder="Nome">{{ProdutoParaVender}}</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="number" placeholder="Quantidade">Quantidade</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="number" placeholder="Preço">preco</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="data" placeholder="Data do Pagamento">datapgto</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="data" placeholder="Data da Entrega">dataentrega</ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Presente">presente</ion-input>
+      </ion-item>
   </ion-item-group>
-
+  <button ion-button block (click)="fechamentoVenda()">Fechamento da Venda</button>
 
 </ion-content>
 
 <ion-footer>
     <button ion-button clear (click)="addCliente()">
-        <ion-icon name="add"></ion-icon>
+        <ion-icon name="add">Novo Cliente</ion-icon>
     </button>
 </ion-footer>

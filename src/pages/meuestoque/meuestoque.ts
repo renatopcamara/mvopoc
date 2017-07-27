@@ -73,7 +73,12 @@ export class Meuestoque {
 
   public getItemsMeuEstoque()
   {
-    this.backand.object.getList('Estoques').then
+    let params =
+    {
+      sort: this.backand.helpers.sort.create("CodUsuario", "asc")
+    }
+    console.log('parametros:'+params)
+    this.backand.object.getList('Estoques',params).then
     ((res: any) =>
         {
           this.items = res.data;
@@ -118,6 +123,10 @@ export class Meuestoque {
       );
     }
 
+  refreshListMeuestoque()
+  {
+    this.getItemsMeuEstoque();
+  }
 
   VouVender(nomeProduto)
   {

@@ -4,24 +4,26 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Meu Estoque</ion-title>
+    <ion-title>Meus Estoques</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-
+Utilize a campo busca para filtrar o produto desejado.
   <ion-list>
     <ion-list-header>
       <ion-searchbar
         [(ngModel)]="searchQuery"
         [showCancelButton]="shouldShowCancel"
+        placeholder = "busca por produto"
         (ionInput)="filterItemsMeuEstoque($event.target.value)">
       </ion-searchbar>
     </ion-list-header>
 
     <ion-item-sliding *ngFor="let item of items">
       <ion-item>
+        <p>Usuário: {{ item.CodUsuario}}</p>
         <p>{{ item.NomedoProduto }}</p>
         <h2>Quantidade: {{ item.Quantidade  }}</h2>
       </ion-item>
@@ -39,3 +41,9 @@
   </ion-list>
 
 </ion-content>
+
+<ion-footer>
+    <button ion-button clear (click)="refreshListMeuestoque()">
+        <ion-icon name="refresh"></ion-icon>
+    </button>
+</ion-footer>

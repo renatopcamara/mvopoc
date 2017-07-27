@@ -19,6 +19,13 @@
 <ion-content padding>
 
   <p>Lista de Produtos Hinode</p>
+  <ion-searchbar
+    [(ngModel)]="searchQuery"
+    placeholder="busca"
+    showCancelButton = true
+    type = "text"
+    (ionInput)="filterItemsProdutos($event.target.value)">
+  </ion-searchbar>
 
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="selecionaUsuario(item.Nome)">

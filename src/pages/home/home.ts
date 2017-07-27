@@ -17,6 +17,8 @@ is_auth_error:boolean = false;
 auth_status:string = null;
 loggedInUser: string = '';
 
+public cliente: string;
+
 NomedoUsuario: string = '';
 
   constructor(
@@ -38,7 +40,7 @@ NomedoUsuario: string = '';
     alert.present();
   }
 
-  public getItemsUsuarios()
+  private getItemsUsuarios()
   {
     this.backand.object.getList('users').then
     ((res: any) =>

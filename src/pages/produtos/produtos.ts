@@ -36,13 +36,43 @@ export class Produtos {
     public backand: BackandService)
   {
 
-    this.getItems();
+  }
 
+  public filterItemsProdutos(searchbar)
+  {
+    // set q to the value of the searchbar
+    var q = searchbar;
+
+    // if the value is an empty string don't filter the items
+    if (!q || q.trim() == '')
+    {
+      return;
+    }
+    else
+    {
+      q = q.trim();
+    }
+    console.log('busca' + q);
+
+    let params =
+    {
+      filter: this.backand.helpers.filter.create('Nome', 'contains', q)
+    }
+    this.backand.object.getList('Produtos', params).then
+    ((res: any) =>
+      {
+        this.items = res.data;
+        console.log('passou no getlist com filtro');
+        this.navCtrl.getActive()
+      },(err: any) =>
+      {
+        alert(err.data);
+      }
+    );
   }
 
 
-
-  public getItems()
+/*  public getItems()
   {
     let params =
     {
@@ -59,6 +89,7 @@ export class Produtos {
         }
     );
   }
+*/
 
   selecionaUsuario(nome:string)
   {

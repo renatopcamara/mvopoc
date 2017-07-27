@@ -466,6 +466,23 @@ export class BackandService {
             .map(res => res.json().data);
     }
 
+    public getListUsuarios(object: string,
+        pageSize: number = null,
+        pageNumber: number = null,
+        filter: any = null,
+        sort: any = null,
+        deep: boolean = false,
+        search: string = null,
+        exclude: string[] = null,
+        relatedObjects: boolean = false)
+    {
+      return this.http.get(this.api_url + '/1/objects/' + object, {
+              headers: this.authHeader
+          })
+          .retry(3)
+          .map(res => res.json().data);
+    }
+
     public getOne(object: string, id: string, deep: boolean = false, exclude: string[] = null, level: number = null) {
         let query: string = '';
         let queryParams : string[] = [];

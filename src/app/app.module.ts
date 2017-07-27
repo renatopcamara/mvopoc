@@ -21,7 +21,7 @@ import { BackandService } from '@backand/angular2-sdk';
   declarations: [
     MyApp,
     HomePage,
-    Usuarios,
+//    Usuarios,
     Produtos,
     Meuestoque,
     Vouvender,
@@ -35,7 +35,7 @@ import { BackandService } from '@backand/angular2-sdk';
   entryComponents: [
     MyApp,
     HomePage,
-    Usuarios,
+//    Usuarios,
     Produtos,
     Meuestoque,
     Vouvender,
