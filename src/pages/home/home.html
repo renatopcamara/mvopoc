@@ -8,18 +8,18 @@
 </ion-header>
 
 <ion-content padding>
-  <p>Bem vindo Fulano ao nosso sistema.</p>
+  <p>Esse APP foi desenvolvido para auxiliar os consultores no controle do estoque próprio e de sua rede e de suas vendas.</p>
+  <p>Outra função importante é a possibilidade de se vender produtos de outros consultores de sua rede</p>
   <p></p>
-  <p>Seu primeiro passo é entrar no sistema. Para isso clique no botão abaixo</p>
+  <p>Para iniciar, cada usuário precisa se registrar atraves do clique no botão abaixo</p>
   <div text-center>
-    <button ion-button clear (click)="showUsuario()">
-        <ion-icon name="log-in" icon-center></ion-icon>
+    <button ion-button block (click)="showUsuario()">
+        <ion-icon name="log-in"></ion-icon>
         Registre-se
     </button>
   </div>
 
-  <p>Através do Menu lateral esquerdo <ion-icon name="menu"></ion-icon> voce deve fazer suas opções de navegação.</p>
-  <p>Para criar sua rede de consultores clique no icone <ion-icon name="add"></ion-icon > no rodapé desta página.</p>
+  <p>Bem Vindo de volta {{nomedousuario}}. A partir desse momento voce pode navegar através do menu lateral.</p>
 </ion-content>
 
 <ion-footer>

@@ -23,7 +23,10 @@ export class Usuarios {
   loggedInUser: string = '';
   NomedoUsuario: string = '';
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public backand: BackandService)
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public backand: BackandService)
   {
     this.searchQuery = '';
     let that = this;
@@ -54,7 +57,6 @@ export class Usuarios {
             this.auth_type = null;
           }
       );
-      this.getItems();
     }
 
   public getItems()
@@ -70,6 +72,7 @@ export class Usuarios {
         }
     );
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Usuarios');

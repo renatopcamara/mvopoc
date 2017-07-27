@@ -696,4 +696,5 @@ export class BackandService {
     public logError(err) {
         console.error('Error: ' + err);
   }
+
 }

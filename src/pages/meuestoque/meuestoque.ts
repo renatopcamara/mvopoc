@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App, ViewController, NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
 
 import { Vouvender } from '../vouvender/vouvender';

@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 window["io"] = io;
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { ListPage } from '../pages/list/list';
+//import { ListPage } from '../pages/list/list';
 import { Usuarios } from '../pages/usuarios/usuarios';
 import { Produtos } from '../pages/produtos/produtos';
 import { Meuestoque } from '../pages/meuestoque/meuestoque';

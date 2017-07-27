@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
-import { Usuarios } from '../usuarios/usuarios';
+import { NavController, AlertController, ActionSheetController } from 'ionic-angular';
+import { BackandService } from '@backand/angular2-sdk';
 
 @Component({
   selector: 'page-home',
@@ -8,12 +8,22 @@ import { Usuarios } from '../usuarios/usuarios';
 })
 export class HomePage {
 
-public UsuarioNome:string ="";
+public items:any[] = [];
+searchQuery: string;
+username:string = '';
+password:string = '';
+auth_type:string = "N/A";
+is_auth_error:boolean = false;
+auth_status:string = null;
+loggedInUser: string = '';
+
+NomedoUsuario: string = '';
 
   constructor(
     public navCtrl: NavController,
-    public alertCtrl: AlertController
-    )
+    public alertCtrl: AlertController,
+    public actionSheetCtrl: ActionSheetController,
+    public backand: BackandService)
   {
 
   }
@@ -27,6 +37,21 @@ public UsuarioNome:string ="";
     });
     alert.present();
   }
+
+  public getItemsUsuarios()
+  {
+    this.backand.object.getList('users').then
+    ((res: any) =>
+        {
+          this.items = res.data;
+          console.log(this.items);
+        },(err: any) =>
+        {
+          alert(err.data);
+        }
+    );
+  }
+
   showRede()
   { let alert = this.alertCtrl.create
     ({
@@ -35,5 +60,14 @@ public UsuarioNome:string ="";
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  ionViewDidLoad()
+  {
+    console.log('ionViewDidLoad Home');
+  }
+  ionViewDidEnter()
+  {
+    console.log('ionViewDidEnter Home');
   }
 }

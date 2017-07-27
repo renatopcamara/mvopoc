@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
-import { Meuestoque } from '../meuestoque/meuestoque';
 import { Meusclientes } from '../meusclientes/meusclientes';
 
 @Component({
