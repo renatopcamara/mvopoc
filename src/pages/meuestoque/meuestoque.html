@@ -10,32 +10,33 @@
 </ion-header>
 
 <ion-content padding>
-Utilize a campo busca para filtrar o produto desejado.
+<p>Utilize a campo busca para filtrar o estoque pelo nome do produto.</p>
   <ion-list>
     <ion-list-header>
       <ion-searchbar
         [(ngModel)]="searchQuery"
-        [showCancelButton]="shouldShowCancel"
-        placeholder = "busca por produto"
+        placeholder = "busca"
+        showCancelButton = true
+        type = "text"
         (ionInput)="filterItemsMeuEstoque($event.target.value)">
       </ion-searchbar>
     </ion-list-header>
 
     <ion-item-sliding *ngFor="let item of items">
-      <ion-item>
+      <button ion-item (click)="detalhesProduto()">
         <p>Usuário: {{ item.CodUsuario}}</p>
         <p>{{ item.NomedoProduto }}</p>
         <h2>Quantidade: {{ item.Quantidade  }}</h2>
-      </ion-item>
+      </button>
       <ion-item-options>
         <button ion-button color="primary" icon-start (click)="VouVender(item.NomedoProduto)">
           <ion-icon name="cart"></ion-icon>
           Vender
         </button>
-        <button ion-button color="secondary" icon-start (click)="Chegou(item.NomedoProduto)">
+<!--        <button ion-button color="secondary" icon-start (click)="Chegou(item.NomedoProduto)">
           <ion-icon name="checkbox"></ion-icon>
           Chegou
-        </button>
+        </button> -->
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>

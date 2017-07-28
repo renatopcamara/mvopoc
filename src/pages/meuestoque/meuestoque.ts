@@ -123,9 +123,15 @@ export class Meuestoque {
       );
     }
 
-  refreshListMeuestoque()
+  detalhesProduto()
   {
-    this.getItemsMeuEstoque();
+    let alert = this.alertCtrl.create
+    ({
+      title: 'Aviso',
+      subTitle: ' No futuro será apresentado a imagem do catálogo do produto selecionado.' ,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   VouVender(nomeProduto)
@@ -146,6 +152,12 @@ export class Meuestoque {
     this.filterItemsMeuEstoque(this.searchQuery);
   }
 
+  refreshListMeuestoque()
+  {
+      this.searchQuery=""
+      this.getItemsMeuEstoque();
+  }
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad Meuestoque');
   }
@@ -154,7 +166,4 @@ export class Meuestoque {
     console.log('ionViewDidEnter Meuestoque');
     this.filterItemsMeuEstoque(this.searchQuery);
   }
-
-
-
 }

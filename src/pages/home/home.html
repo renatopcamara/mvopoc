@@ -8,10 +8,10 @@
 </ion-header>
 
 <ion-content padding>
-  <p>Esse APP foi desenvolvido para auxiliar os consultores no controle do estoque próprio e de sua rede e de suas vendas.</p>
+  <p>Esse APP foi desenvolvido para auxiliar os consultores no controle de seus estoques e suas vendas.</p>
   <p></p>
-  <p>Para iniciar, cada usuário precisa se registrar atraves do clique no botão abaixo</p>
-  <button ion-button block (click)="getItemsUsuarios()">Carrega Usuarios</button>
+  <p>Antes de iniciar, clique no botão abaixo para carregar os usuários do sistema, em seguida selecione o usuario no campo de mesmo nome. </p>
+  <button ion-button block (click)="showUsuarios()">Carrega Usuarios</button>
   <ion-list>
     <ion-item>
       <ion-label>Usuario</ion-label>
@@ -23,6 +23,3 @@
 
   <p>Bem Vindo de volta {{usuario}}. A partir desse momento voce pode navegar através do menu lateral.</p>
 </ion-content>
-<ion-footer>
-    <button ion-button clear (click)="showRede()"><ion-icon name="add" icon-right></ion-icon></button>
-</ion-footer>

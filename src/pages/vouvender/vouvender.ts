@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
 import { Meusclientes } from '../meusclientes/meusclientes';
+import { SMS } from '@ionic-native/sms';
 
 @Component({
   selector: 'page-vouvender',
@@ -22,9 +23,16 @@ export class Vouvender {
     public navCtrl: NavController,
     public navParams: NavParams,
     public backand: BackandService,
-    public alertCtrl: AlertController)
+    public alertCtrl: AlertController,
+    private sms: SMS)
   {
     this.getItemsClientes();
+  }
+
+  public enviaSMS()
+  {
+    console.log ('Passando pela função de envio de SMS')
+    this.sms.send('999971334','Olá. Isso é um teste de envio de SMS pelo MVO')
   }
 
   public getItemsClientes()
@@ -76,6 +84,7 @@ export class Vouvender {
       buttons: ['OK']
     });
     alert.present();
+    this.enviaSMS();
   }
 
   addCliente()

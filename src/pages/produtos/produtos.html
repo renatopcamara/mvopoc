@@ -10,15 +10,13 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Produtos</ion-title>
+    <ion-title>Catálogo de Produtos</ion-title>
   </ion-navbar>
 
 </ion-header>
 
-
 <ion-content padding>
-
-  <p>Lista de Produtos Hinode</p>
+  <p>Utilize a campo busca para filtrar o catálogo pelo nome do produto.</p>
   <ion-searchbar
     [(ngModel)]="searchQuery"
     placeholder="busca"
@@ -28,7 +26,7 @@
   </ion-searchbar>
 
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="selecionaUsuario(item.Nome)">
+    <button ion-item *ngFor="let item of items" (click)="selecionaProduto()">
       <p>Código Hinode: {{ item.CodigoHinode }}</p>
       <p>Nome: {{ item.Nome }}</p>
       <p>Preço: {{ item.Preco  }}</p>
@@ -36,5 +34,10 @@
       <p>Status: {{ item.Status}}</p>
     </button>
   </ion-list>
-
 </ion-content>
+
+<ion-footer>
+    <button ion-button clear (click)="refreshCatalogo()">
+        <ion-icon name="refresh"></ion-icon>
+    </button>
+</ion-footer>

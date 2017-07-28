@@ -17,7 +17,7 @@ is_auth_error:boolean = false;
 auth_status:string = null;
 loggedInUser: string = '';
 
-public cliente: string;
+public UsuarioLogado: string;
 
 NomedoUsuario: string = '';
 
@@ -30,30 +30,31 @@ NomedoUsuario: string = '';
 
   }
 
-  showUsuario()
+  showUsuarios()
   { let alert = this.alertCtrl.create
     ({
-      title: 'Entrar',
-      subTitle: 'Voce clicou no botão de entrar. No momento não está disponível',
+      title: 'Aviso',
+      subTitle: 'Os usuários já estão carregados.',
       buttons: ['OK']
     });
     alert.present();
   }
 
-  private getItemsUsuarios()
+/*  private getItemsUsuarios()
   {
     this.backand.object.getList('users').then
     ((res: any) =>
         {
-          this.items = res.data;
-          console.log(this.items);
+          this.items = res.data
+          console.log(this.items)
+          this.showUsuario()
         },(err: any) =>
         {
           alert(err.data);
         }
     );
   }
-
+*/
   showRede()
   { let alert = this.alertCtrl.create
     ({

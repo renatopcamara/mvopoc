@@ -3,6 +3,8 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import io from 'socket.io-client';
 window["io"] = io;
+import { SMS } from '@ionic-native/sms';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 //import { ListPage } from '../pages/list/list';
@@ -44,6 +46,7 @@ import { BackandService } from '@backand/angular2-sdk';
   providers: [
     StatusBar,
     SplashScreen,
+    SMS,
     BackandService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

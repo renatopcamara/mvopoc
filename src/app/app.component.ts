@@ -39,7 +39,7 @@ export class MyApp {
       { title: 'Vou Vender', component: Vouvender },
       { title: 'Meus Clientes', component: Meusclientes },
 //      { title: 'Log In', component: Usuarios },
-      { title: 'Produtos Hinode', component: Produtos }
+      { title: 'Catálogo de Produtos', component: Produtos }
 //      { title: 'List Page', component: ListPage}
       ];
     }

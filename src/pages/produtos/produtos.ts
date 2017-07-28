@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
 
 @Component({
@@ -33,7 +33,8 @@ export class Produtos {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public backand: BackandService)
+    public backand: BackandService,
+    public alertCtrl: AlertController)
   {
 
   }
@@ -71,8 +72,7 @@ export class Produtos {
     );
   }
 
-
-/*  public getItems()
+  public getItems()
   {
     let params =
     {
@@ -89,12 +89,22 @@ export class Produtos {
         }
     );
   }
-*/
 
-  selecionaUsuario(nome:string)
+  public selecionaProduto()
   {
-    console.log(nome)
-    this.NomedoUsuario = '' + nome ;
+    let alert = this.alertCtrl.create
+    ({
+      title: 'Aviso',
+      subTitle: ' No futuro será apresentado a imagem do catálogo do produto selecionado.' ,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
+  public refreshCatalogo()
+  {
+      this.searchQuery='';
+      this.getItems();
   }
 
   ionViewDidLoad() {

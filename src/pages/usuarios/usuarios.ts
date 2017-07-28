@@ -73,14 +73,15 @@ export class Usuarios {
     );
   }
 
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Usuarios');
-  }
-
   selecionaUsuario(nome:string)
   {
   console.log(nome)
   this.NomedoUsuario = 'Bem vindo ' + nome;
   }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad Usuarios');
+  }
+
+
 }
