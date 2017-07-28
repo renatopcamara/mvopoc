@@ -34,7 +34,7 @@ NomedoUsuario: string = '';
   { let alert = this.alertCtrl.create
     ({
       title: 'Aviso',
-      subTitle: 'Os usuários já estão carregados.',
+      subTitle: 'Usuários carregados com sucesso.',
       buttons: ['OK']
     });
     alert.present();
