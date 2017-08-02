@@ -164,6 +164,6 @@ export class Meuestoque {
 
   ionViewDidEnter() {
     console.log('ionViewDidEnter Meuestoque');
-    this.filterItemsMeuEstoque(this.searchQuery);
+    this.getItemsMeuEstoque();
   }
 }

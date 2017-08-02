@@ -1,11 +1,11 @@
 
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="danger">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Meus Clientes</ion-title>
+    <ion-title text-center>Meus Clientes</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -28,7 +28,7 @@
     </ion-item>
   </ion-list>
 
-<button ion-button block (click)="novoItem()">Salvar</button>
+<button ion-button color="light" block (click)="novoItem()">Salvar</button>
 
   <ion-list>
     <ion-item-sliding *ngFor="let item of items">

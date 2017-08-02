@@ -3,15 +3,15 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title text-center>Home</ion-title>
+    <ion-title text-center>MVO</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <p>Esse APP foi desenvolvido para auxiliar os consultores no controle de seus estoques e suas vendas.</p>
+  <p>Esse aplicativo foi desenvolvido para auxiliar os consultores HINODE no controle de seus estoques e vendas.</p>
   <p></p>
-  <p>Antes de iniciar, clique no botão abaixo para carregar os usuários do sistema, em seguida selecione o usuario no campo de mesmo nome. </p>
-  <button ion-button block (click)="showUsuarios()">Carregar Usuarios</button>
+<!--
+  <button ion-button block (click)="getItemsUsuarios()">Carregar Usuarios</button>
   <ion-list>
     <ion-item>
       <ion-label>Usuario</ion-label>
@@ -20,6 +20,17 @@
       </ion-select>
     </ion-item>
   </ion-list>
+-->
+<p>Bem vinda de volta Rosana. Escolha um dos botões abaixo conforme sua necessidade</p>
 
-  <p>Bem Vindo de volta {{usuario}}. A partir desse momento voce pode navegar através do menu lateral.</p>
+<div text-center>
+  <button ion-button round color="primary" (click)="abreMeuestoque()">Meus Estoques</button>
+  <p></p>
+  <button ion-button round color="secondary" (click)="abreVouvender()">Vou Vender</button>
+  <p></p>
+  <button ion-button round color="danger" (click)="abreMeusclientes()">Meus Clientes</button>
+  <p></p>
+  <button ion-button round color="dark" (click)="abreProdutos()">Catálogo de Produtos</button>
+</div>
+
 </ion-content>

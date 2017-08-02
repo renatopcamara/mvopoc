@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 import { NavController, AlertController, ActionSheetController } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
 
+import { Usuarios } from '../usuarios/usuarios';
+import { Produtos } from '../produtos/produtos';
+import { Meuestoque } from '../meuestoque/meuestoque';
+import { Meusclientes } from '../meusclientes/meusclientes';
+import { Vouvender } from '../vouvender/vouvender';
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -40,21 +46,21 @@ NomedoUsuario: string = '';
     alert.present();
   }
 
-/*  private getItemsUsuarios()
+  private getItemsUsuarios()
   {
     this.backand.object.getList('users').then
     ((res: any) =>
         {
           this.items = res.data
           console.log(this.items)
-          this.showUsuario()
+          this.showUsuarios()
         },(err: any) =>
         {
           alert(err.data);
         }
     );
   }
-*/
+
   showRede()
   { let alert = this.alertCtrl.create
     ({
@@ -63,6 +69,26 @@ NomedoUsuario: string = '';
       buttons: ['OK']
     });
     alert.present();
+  }
+
+  public abreMeuestoque()
+  {
+    this.navCtrl.push(Meuestoque)
+  }
+
+  public abreVouvender()
+  {
+    this.navCtrl.push(Vouvender)
+  }
+
+  public abreMeusclientes()
+  {
+    this.navCtrl.push(Meusclientes)
+  }
+
+  public abreProdutos()
+  {
+    this.navCtrl.push(Produtos)
   }
 
   ionViewDidLoad()

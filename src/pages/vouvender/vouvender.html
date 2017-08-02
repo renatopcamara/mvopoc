@@ -6,11 +6,11 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="secondary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Vou Vender</ion-title>
+    <ion-title text-center>Vou Vender</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -41,11 +41,8 @@
       <ion-item>
         <ion-input type="data" placeholder="Data da Entrega">dataentrega</ion-input>
       </ion-item>
-      <ion-item>
-        <ion-input type="text" placeholder="Presente">presente</ion-input>
-      </ion-item>
   </ion-item-group>
-  <button ion-button block (click)="fechamentoVenda()">Fechamento da Venda</button>
+  <button ion-button color="light" block (click)="fechamentoVenda()">Fechamento da Venda</button>
 
 </ion-content>
 

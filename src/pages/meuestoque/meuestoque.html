@@ -1,35 +1,44 @@
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Meus Estoques</ion-title>
+    <ion-title text-center>Meus Estoques</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
-<p>Utilize a campo busca para filtrar o estoque pelo nome do produto.</p>
-  <ion-list>
-    <ion-list-header>
-      <ion-searchbar
-        [(ngModel)]="searchQuery"
-        placeholder = "busca"
-        showCancelButton = true
-        type = "text"
-        (ionInput)="filterItemsMeuEstoque($event.target.value)">
-      </ion-searchbar>
-    </ion-list-header>
+  <p>Utilize a campo busca para filtrar o estoque pelo nome do produto.</p>
 
+  <ion-searchbar
+    [(ngModel)]="searchQuery"
+    placeholder = "busca"
+    showCancelButton = true
+    type = "text"
+    (ionInput)="filterItemsMeuEstoque($event.target.value)">
+  </ion-searchbar>
+
+<!--  <button (click)="show = !show">{{show ? 'hide' : 'show'}}</button>
+  show = {{show}}
+  <div *ngIf="show">Text to show</div>
+-->
+
+  <ion-list>
+<!--    <ion-list-header>
+      alo
+    </ion-list-header>
+-->
     <ion-item-sliding *ngFor="let item of items">
+
       <button ion-item (click)="detalhesProduto()">
         <p>Usuário: {{ item.CodUsuario}}</p>
         <p>{{ item.NomedoProduto }}</p>
         <h2>Quantidade: {{ item.Quantidade  }}</h2>
       </button>
       <ion-item-options>
-        <button ion-button color="primary" icon-start (click)="VouVender(item.NomedoProduto)">
+        <button ion-button color="secondary" icon-start (click)="VouVender(item.NomedoProduto)">
           <ion-icon name="cart"></ion-icon>
           Vender
         </button>
