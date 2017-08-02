@@ -11,6 +11,7 @@ import { Produtos } from '../pages/produtos/produtos';
 import { Meuestoque } from '../pages/meuestoque/meuestoque';
 import { Meusclientes } from '../pages/meusclientes/meusclientes';
 import { Vouvender } from '../pages/vouvender/vouvender';
+import { Estoquesegmentado } from '../pages/estoquesegmentado/estoquesegmentado';
 
 import { BackandService } from '@backand/angular2-sdk';
 

@@ -7,6 +7,7 @@ import { Produtos } from '../produtos/produtos';
 import { Meuestoque } from '../meuestoque/meuestoque';
 import { Meusclientes } from '../meusclientes/meusclientes';
 import { Vouvender } from '../vouvender/vouvender';
+import { Estoquesegmentado } from '../estoquesegmentado/estoquesegmentado';
 
 @Component({
   selector: 'page-home',
@@ -73,7 +74,7 @@ NomedoUsuario: string = '';
 
   public abreMeuestoque()
   {
-    this.navCtrl.push(Meuestoque)
+    this.navCtrl.push(Estoquesegmentado)
   }
 
   public abreVouvender()
@@ -89,6 +90,23 @@ NomedoUsuario: string = '';
   public abreProdutos()
   {
     this.navCtrl.push(Produtos)
+  }
+
+  public abreEstoquesegmentado()
+  {
+    this.navCtrl.push(Meuestoque)
+  }
+
+
+  public abreCompartilhar()
+  {
+    let alert = this.alertCtrl.create
+      ({
+        title: 'Compartilhamento',
+        subTitle: 'No momento não está disponível',
+        buttons: ['OK']
+      });
+      alert.present();
   }
 
   ionViewDidLoad()

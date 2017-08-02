@@ -13,6 +13,7 @@ import { Produtos } from '../pages/produtos/produtos';
 import { Meuestoque } from '../pages/meuestoque/meuestoque';
 import { Meusclientes } from '../pages/meusclientes/meusclientes';
 import { Vouvender } from '../pages/vouvender/vouvender';
+import { Estoquesegmentado } from '../pages/estoquesegmentado/estoquesegmentado';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,6 +28,7 @@ import { BackandService } from '@backand/angular2-sdk';
     Produtos,
     Meuestoque,
     Vouvender,
+    Estoquesegmentado,
     Meusclientes
   ],
   imports: [
@@ -41,6 +43,7 @@ import { BackandService } from '@backand/angular2-sdk';
     Produtos,
     Meuestoque,
     Vouvender,
+    Estoquesegmentado,
     Meusclientes
   ],
   providers: [
