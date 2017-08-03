@@ -23,6 +23,10 @@
       <ion-input type="tel" [(ngModel)]="whatsapp"></ion-input>
     </ion-item>
     <ion-item>
+      <ion-label floating>Fixo</ion-label>
+      <ion-input type="tel" [(ngModel)]="fixo"></ion-input>
+    </ion-item>
+    <ion-item>
       <ion-label floating>E-Mail</ion-label>
       <ion-input type="email" [(ngModel)]="email"></ion-input>
     </ion-item>
@@ -36,6 +40,7 @@
         <p>Nome: {{ item.Nome }}</p>
         <p>Email: {{ item.Email  }}</p>
         <p>Whatsapp: {{ item.Whatsapp }}</p>
+        <p>Fixo: {{ item.Fixo }}</p>
       </ion-item>
       <ion-item-options>
         <button ion-button color="danger" icon-start (click)="Deletar(item.id)">
@@ -47,3 +52,8 @@
   </ion-list>
 
 </ion-content>
+
+<ion-footer>
+  <ion-navbar color="danger">
+  </ion-navbar>
+</ion-footer>

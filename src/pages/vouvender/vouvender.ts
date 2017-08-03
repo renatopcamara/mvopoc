@@ -81,7 +81,16 @@ export class Vouvender {
     ({
       title: 'PRÓXIMOS PASSOS',
       subTitle: '1-A quantidade em estoque é atualizada. 2-O valor pago é registrado. 3-Se a data de entrega for futura então agenda o compromisso. 4-Envia texto RECIBO para o cliente via ZAP ou EMAIL',
-      buttons: ['OK']
+      buttons:
+      [
+        {
+          text: 'OK',
+          handler: () => {
+            console.log('aceitei o OK');
+            this.navCtrl.pop()
+          }
+        }
+      ]
     });
     alert.present();
     this.enviaSMS();

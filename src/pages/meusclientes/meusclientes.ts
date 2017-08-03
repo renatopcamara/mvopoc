@@ -13,6 +13,7 @@ export class Meusclientes {
   nome: string;
   email: string;
   whatsapp: string;
+  fixo: string;
   Status: string;
 
   public items:any[] = [];
@@ -61,6 +62,7 @@ export class Meusclientes {
       Nome: this.nome,
       Email: this.email,
       Whatsapp: this.whatsapp,
+      Fixo: this.fixo,
       Status: 'Ativo'
     };
     console.log(item)
@@ -73,6 +75,7 @@ export class Meusclientes {
             this.nome="";
             this.email="";
             this.whatsapp="";
+            this.fixo="";
             this.getItems();
           },(err: any) =>
           {
@@ -87,6 +90,7 @@ export class Meusclientes {
     this.nome=registro.nome;
     this.email=registro.email;
     this.whatsapp=registro.whatsapp;
+    this.fixo=registro.fixo;
     console.log('registros de atualização' + registro.id)
   }
 
@@ -111,6 +115,7 @@ export class Meusclientes {
       Nome: this.nome,
       Email: this.email,
       Whatsapp: this.whatsapp,
+      Fixo: this.fixo,
     };
     console.log('autalizando o ID ' + this.id)
     if (item.Whatsapp && item.Nome)
@@ -122,6 +127,7 @@ export class Meusclientes {
             this.nome="";
             this.email="";
             this.whatsapp="";
+            this.fixo=";"
           },(err: any) =>
           {
             alert(err.data);

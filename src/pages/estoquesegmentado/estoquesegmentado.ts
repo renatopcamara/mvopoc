@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, NavParams, AlertController, List } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
 import { Vouvender } from '../vouvender/vouvender';
 
@@ -15,6 +15,8 @@ import { Vouvender } from '../vouvender/vouvender';
   templateUrl: 'estoquesegmentado.html',
 })
 export class Estoquesegmentado {
+
+  @ViewChild(List) list: List;
 
   private items:any[] = [];
   searchQuery: string;
@@ -145,6 +147,7 @@ detalhesProduto()
 
 VouVender(nomeProduto)
 {
+  this.list.closeSlidingItems()
   this.navCtrl.push(Vouvender)
 }
 
@@ -156,7 +159,6 @@ VouVender(nomeProduto)
   ionViewDidLoad()
   {
     console.log('ionViewDidEnter Estoquesegmentado');
-    this.getItemsMeuEstoque();
   }
 
 }
