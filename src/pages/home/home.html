@@ -28,14 +28,15 @@
 <button ion-button round color="danger" (click)="launchModalMeuscliente()">Meus Clientes</button>
 </div>
 
-<div *ngIf="NomeCliente==' ' ; elseBlock">
-  vazio
+<div *ngIf="NomeCliente!=' ' ; elseBlock">
+  <p>Escolhido o(a): {{NomeCliente}}. Boas vendas!</p>
 </div>
+<!--
 <ng-template #elseBlock>nome completo</ng-template>
+-->
 
 
-<p>Escolhido o(a): {{NomeCliente}}. Boas vendas!</p>
-<p>Utilize os botões abaixo conforme sua necessidade</p>
+<p>Após a escolha do cliente utilize os botões abaixo.</p>
 
 <div text-center>
   <button ion-button round color="primary" (click)="abreMeuestoque()">Meus Estoques</button>
