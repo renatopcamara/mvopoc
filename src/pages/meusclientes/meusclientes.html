@@ -6,10 +6,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title text-center>Meus Clientes</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="closeModal(' ')"><ion-icon name="close"></ion-icon></button>
+    </ion-buttons>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content padding>
 
@@ -36,12 +37,12 @@
 
   <ion-list>
     <ion-item-sliding *ngFor="let item of items">
-      <ion-item>
+      <button ion-item (click)="closeModal(item)">
         <p>Nome: {{ item.Nome }}</p>
         <p>Email: {{ item.Email  }}</p>
         <p>Whatsapp: {{ item.Whatsapp }}</p>
         <p>Fixo: {{ item.Fixo }}</p>
-      </ion-item>
+      </button>
       <ion-item-options>
         <button ion-button color="danger" icon-start (click)="Deletar(item.id)">
           <ion-icon name="trash"></ion-icon>

@@ -148,7 +148,14 @@ detalhesProduto()
 VouVender(nomeProduto)
 {
   this.list.closeSlidingItems()
-  this.navCtrl.push(Vouvender)
+  let data =
+  {
+    ID: nomeProduto.id,
+    Produto: nomeProduto.NomedoProduto,
+    Qtd: nomeProduto.Quantidade
+  };
+//  console.log("dados que serão passado para a proxima pagina: " + data.Produto + " qtd:" + data.Qtd);
+  this.navCtrl.push(Vouvender, data)
 }
 
   ionViewDidEnter()

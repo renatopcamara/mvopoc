@@ -16,6 +16,12 @@ export class Vouvender {
   email: string;
   whatsapp: string;
   Status: string;
+  ProdutoParaVender: string;
+  Quantidade: number;
+  Datapgto: string = new Date().toISOString();
+  Dataentrega: string = new Date().toISOString();
+  Preco: number;
+  QtdMax: any;
 
   private clientes:any[] = [];
 
@@ -27,6 +33,7 @@ export class Vouvender {
     private sms: SMS)
   {
     this.getItemsClientes();
+
   }
 
   public enviaSMS()
@@ -101,7 +108,13 @@ export class Vouvender {
     this.navCtrl.push(Meusclientes)
   }
   ionViewDidLoad() {
-    console.log('ionViewDidLoad Vouvender: ');
+//    console.log('ionViewDidLoad Vouvender: ' + this.navParams.get('ID'));
+    this.id = this.navParams.get('ID');
+    this.ProdutoParaVender = this.navParams.get('Produto');
+    this.Quantidade = this.navParams.get('Qtd');
+    this.QtdMax = this.Quantidade;
+    console.log('QtdMax: ' + this.QtdMax);
+    this.Preco = null;
   }
 
   ionViewDidEnter() {

@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title text-center>MVO</ion-title>
+    <ion-title text-center>MVO - Rosana</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -21,15 +21,28 @@
     </ion-item>
   </ion-list>
 -->
-<p>Bem vinda de volta Rosana. Escolha um dos botões abaixo conforme sua necessidade</p>
+
+<!-- <button ion-button (click)="launchModalPage()">next</button> -->
+<p>Primeiro passo: Escolha ou cadastre o cliente que voce está trabalhando clicando no botão abaixo:</p>
+<div text-center>
+<button ion-button round color="danger" (click)="launchModalMeuscliente()">Meus Clientes</button>
+</div>
+
+<div *ngIf="NomeCliente==' ' ; elseBlock">
+  vazio
+</div>
+<ng-template #elseBlock>nome completo</ng-template>
+
+
+<p>Escolhido o(a): {{NomeCliente}}. Boas vendas!</p>
+<p>Utilize os botões abaixo conforme sua necessidade</p>
 
 <div text-center>
   <button ion-button round color="primary" (click)="abreMeuestoque()">Meus Estoques</button>
   <p></p>
   <button ion-button round color="secondary" (click)="abreVouvender()">Vou Vender</button>
   <p></p>
-  <button ion-button round color="danger" (click)="abreMeusclientes()">Meus Clientes</button>
-  <p></p>
+
   <button ion-button round color="dark" (click)="abreProdutos()">Catálogo de Produtos</button>
   <p></p>
   <button ion-button round icon-right color="light" (click)="abreCompartilhar()">

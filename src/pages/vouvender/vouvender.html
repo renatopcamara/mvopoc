@@ -27,22 +27,27 @@
       </ion-item>
     <ion-item-divider color="light">Dados do Produto</ion-item-divider>
       <ion-item>
-        <ion-input type="text" placeholder="Nome">{{ProdutoParaVender}}</ion-input>
+        <ion-label floating>Produto</ion-label>
+        <ion-input type="text" [(ngModel)]="ProdutoParaVender" ></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="number" placeholder="Quantidade">Quantidade</ion-input>
+        <ion-label floating>Quantidade</ion-label>
+        <ion-input type="number" [(ngModel)]="Quantidade"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="number" placeholder="Preço">preco</ion-input>
+        <ion-label floating>Preço</ion-label>
+        <ion-input type="number" [(ngModel)]="Preco"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="data" placeholder="Data do Pagamento">datapgto</ion-input>
+        <ion-label floating>Data Pagamento</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DDDD MMMM YYYY" [(ngModel)]="Datapgto"></ion-datetime>
       </ion-item>
       <ion-item>
-        <ion-input type="data" placeholder="Data da Entrega">dataentrega</ion-input>
+        <ion-label floating>Data Entrega</ion-label>
+        <ion-datetime displayFormat="DD/MM/YYYY" pickerFormat="DDDD MMMM YYYY" [(ngModel)]="Dataentrega">dataentrega</ion-datetime>
       </ion-item>
   </ion-item-group>
-  <button ion-button color="light" block (click)="fechamentoVenda()">Fechamento da Venda</button>
+  <button ion-button color="light" block (click)="fechamentoVenda()">Confirmação da Venda</button>
 
 </ion-content>
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ActionSheetController } from 'ionic-angular';
+import { NavController, AlertController, ActionSheetController, ModalController } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
 
 import { Usuarios } from '../usuarios/usuarios';
@@ -25,16 +25,30 @@ auth_status:string = null;
 loggedInUser: string = '';
 
 public UsuarioLogado: string;
-
+NomeCliente: string = ' ';
 NomedoUsuario: string = '';
 
   constructor(
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public actionSheetCtrl: ActionSheetController,
+    public modalCtrl: ModalController,
     public backand: BackandService)
   {
 
+  }
+
+  launchModalMeuscliente()
+  {
+    let modal = this.modalCtrl.create(Meusclientes);
+
+    modal.onDidDismiss((data)=>
+    {
+      console.log(" recebendo o nome do cliente do modal: " + data);
+      this.NomeCliente = data.NomeCliente;
+    });
+    modal.present();
+//    console.log("passei no launchModalPage");
   }
 
   showUsuarios()

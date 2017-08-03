@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ViewController } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
 
 @Component({
@@ -25,11 +25,13 @@ export class Meusclientes {
   auth_status:string = null;
   loggedInUser: string = '';
   NomedoUsuario: string = '';
+  NomeCliente: string = ' ';
 
   constructor(
-  public navCtrl: NavController,
-  public navParams: NavParams,
-  public backand: BackandService)
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
+    public backand: BackandService)
   {
   }
 
@@ -133,6 +135,14 @@ export class Meusclientes {
             alert(err.data);
           }
       );
+  }
 
+  closeModal(infos)
+  {
+    let data =
+    {
+      NomeCliente: infos.Nome,
+    }
+    this.viewCtrl.dismiss(data);
   }
 }
