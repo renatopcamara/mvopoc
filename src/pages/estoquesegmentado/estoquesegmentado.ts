@@ -26,8 +26,9 @@ export class Estoquesegmentado {
   is_auth_error:boolean = false;
   auth_status:string = null;
   loggedInUser: string = '';
-  NomedoUsuario: string = '';
   email: string = '';
+  NomeCliente: string;
+  NomedoUsuario: string;
 
   constructor(
     public navCtrl: NavController,
@@ -150,9 +151,13 @@ VouVender(nomeProduto)
   this.list.closeSlidingItems()
   let data =
   {
+    Cliente: this.NomeCliente,
+    Usuario: this.NomedoUsuario,
+    IDProd: nomeProduto.CodProduto,
     ID: nomeProduto.id,
     Produto: nomeProduto.NomedoProduto,
-    Qtd: nomeProduto.Quantidade
+    Qtd: nomeProduto.Quantidade,
+    Preco: nomeProduto.Preco
   };
 //  console.log("dados que serão passado para a proxima pagina: " + data.Produto + " qtd:" + data.Qtd);
   this.navCtrl.push(Vouvender, data)
@@ -165,7 +170,9 @@ VouVender(nomeProduto)
 
   ionViewDidLoad()
   {
-    console.log('ionViewDidEnter Estoquesegmentado');
+    this.NomeCliente = this.navParams.get('Cliente');
+    this.NomedoUsuario = this.navParams.get('Usuario');
+    console.log('Load MeusEstoques: ' + this.NomedoUsuario + ' ' + this.NomeCliente);
   }
 
 }

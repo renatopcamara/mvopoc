@@ -11,19 +11,22 @@ import { SMS } from '@ionic-native/sms';
 export class Vouvender {
 
   /* Campos da Tabela Estoques */
-  id: number;
+  IDEstoque: number;
   nome: string;
   email: string;
   whatsapp: string;
   Status: string;
   ProdutoParaVender: string;
-  Quantidade: number;
+  QuantidadeEscolhida: number;
+  Quantidadeemestoque: number;
   Datapgto: string = new Date().toISOString();
   Dataentrega: string = new Date().toISOString();
   Preco: number;
   QtdMax: any;
-
-  private clientes:any[] = [];
+  NomeCliente: string;
+  NomedoUsuario: string;
+  CodProduto:string;
+  private items:any[] = [];
 
   constructor(
     public navCtrl: NavController,
@@ -32,29 +35,58 @@ export class Vouvender {
     public alertCtrl: AlertController,
     private sms: SMS)
   {
-    this.getItemsClientes();
 
+  }
+
+  public atualizaEstoques()
+  {
+    let data =
+    {
+      Quantidade: this.Quantidadeemestoque - this.QuantidadeEscolhida
+    }
+    console.log('ID:'+ this.IDEstoque + 'qtd: ' + data.Quantidade)
+    this.backand.object.update('Estoques', this.IDEstoque , data, ).then
+    ((res: any) =>
+        {
+          this.items = res.data;
+          console.log('atualizei a qtd do produto em estoque. Proximo passo gerar o boleto');
+        },(err: any) =>
+        {
+          alert(err.data);
+        }
+    );
+  }
+
+  public novaVenda()
+  {
+    let item =
+    {
+      Produto: '',
+      Qtd: '',
+      ValorPago: '',
+      DataPagamento: '',
+      DataEntrega: '',
+      Presente: '',
+      CodProduto: '',
+      idCliente:'',
+      NomeCliente:''
+    };
+    console.log(item)
+    this.backand.object.create('Vendas',item).then
+    ((res: any) =>
+        {
+          console.log('salvei nova venda...');
+        },(err: any) =>
+        {
+          alert(err.data);
+        }
+    );
   }
 
   public enviaSMS()
   {
     console.log ('Passando pela função de envio de SMS')
     this.sms.send('999971334','Olá. Isso é um teste de envio de SMS pelo MVO')
-  }
-
-  public getItemsClientes()
-  {
-    this.backand.object.getList('Clientes').then
-    ((res: any) =>
-        {
-          this.clientes = res.data;
-          console.log('itens lidos....');
-          console.log('Nome ' , this.clientes)
-        },(err: any) =>
-        {
-          alert(err.data);
-        }
-    );
   }
 
   fechamentoVenda()
@@ -109,16 +141,19 @@ export class Vouvender {
   }
   ionViewDidLoad() {
 //    console.log('ionViewDidLoad Vouvender: ' + this.navParams.get('ID'));
-    this.id = this.navParams.get('ID');
+    this.NomeCliente = this.navParams.get('Cliente');
+    this.NomedoUsuario = this.navParams.get('Usuario');
+    this.CodProduto = this.navParams.get('IDProd');
+    this.IDEstoque = this.navParams.get('ID');
     this.ProdutoParaVender = this.navParams.get('Produto');
-    this.Quantidade = this.navParams.get('Qtd');
-    this.QtdMax = this.Quantidade;
-    console.log('QtdMax: ' + this.QtdMax);
-    this.Preco = null;
+    this.QuantidadeEscolhida = this.navParams.get('Qtd');
+    this.Quantidadeemestoque = this.navParams.get('Qtd');
+    this.Preco = this.navParams.get('Preco');
+//    console.log('Cliente: ' + this.NomeCliente + ' Usuario: ' + this.NomedoUsuario);
   }
 
   ionViewDidEnter() {
-    console.log('ionViewDidEnter Meuestoque');
-    this.getItemsClientes();
+//    console.log('ionViewDidEnter Meuestoque');
+//    this.getItemsClientes();
   }
 }

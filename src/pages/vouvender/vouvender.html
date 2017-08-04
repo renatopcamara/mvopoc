@@ -10,29 +10,31 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title text-center>Vou Vender</ion-title>
+    <ion-title text-center>Vou Vender - {{NomedoUsuario}}</ion-title>
+    <ion-title text-center>Cliente: {{NomeCliente}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <button ion-buttons (click)="atualizaEstoques()">veja</button>
   <ion-item-group>
-    <ion-item-divider color="light">Dados do Cliente</ion-item-divider>
+<!--    <ion-item-divider color="light">Dados do Cliente</ion-item-divider>
       <ion-item>
         <ion-label>Cliente</ion-label>
         <ion-select [(ngModel)]="cliente">
           <ion-option *ngFor="let item of clientes" value={{item.Nome}}>{{item.Nome}}</ion-option>
         </ion-select>
       </ion-item>
-    <ion-item-divider color="light">Dados do Produto</ion-item-divider>
+    <ion-item-divider color="light">Dados do Produto</ion-item-divider>-->
       <ion-item>
         <ion-label floating>Produto</ion-label>
         <ion-input type="text" [(ngModel)]="ProdutoParaVender" ></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Quantidade</ion-label>
-        <ion-input type="number" [(ngModel)]="Quantidade"></ion-input>
+        <ion-input type="number" [(ngModel)]="QuantidadeEscolhida"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Preço</ion-label>

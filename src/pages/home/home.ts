@@ -26,7 +26,7 @@ loggedInUser: string = '';
 
 public UsuarioLogado: string;
 NomeCliente: string = ' ';
-NomedoUsuario: string = '';
+NomedoUsuario: string = 'Rosana';
 
   constructor(
     public navCtrl: NavController,
@@ -88,12 +88,23 @@ NomedoUsuario: string = '';
 
   public abreMeuestoque()
   {
-    this.navCtrl.push(Estoquesegmentado)
+    let data =
+    {
+      Cliente: this.NomeCliente,
+      Usuario: this.NomedoUsuario
+    };
+    console.log ('preparando envio de daddos' + data.Cliente + data.Usuario)
+    this.navCtrl.push(Estoquesegmentado, data)
   }
 
   public abreVouvender()
   {
-    this.navCtrl.push(Vouvender)
+    let data =
+    {
+      Cliente: this.NomeCliente,
+      Usuario: this.NomedoUsuario
+    };
+    this.navCtrl.push(Vouvender, data)
   }
 
   public abreMeusclientes()
