@@ -11,7 +11,7 @@ import { SMS } from '@ionic-native/sms';
 export class Vouvender {
 
   /* Campos da Tabela Estoques */
-  IDEstoque: number;
+  CodEstoque: number;
   nome: string;
   email: string;
   whatsapp: string;
@@ -24,6 +24,8 @@ export class Vouvender {
   Preco: number;
   QtdMax: any;
   NomeCliente: string;
+  CodCliente: string;
+  NomedoCliente: string;
   NomedoUsuario: string;
   CodProduto:string;
   private items:any[] = [];
@@ -44,12 +46,13 @@ export class Vouvender {
     {
       Quantidade: this.Quantidadeemestoque - this.QuantidadeEscolhida
     }
-    console.log('ID:'+ this.IDEstoque + 'qtd: ' + data.Quantidade)
-    this.backand.object.update('Estoques', this.IDEstoque , data, ).then
+    console.log('ID:'+ this.CodEstoque + 'qtd: ' + data.Quantidade)
+    this.backand.object.update('Estoques', this.CodEstoque , data).then
     ((res: any) =>
         {
           this.items = res.data;
-          console.log('atualizei a qtd do produto em estoque. Proximo passo gerar o boleto');
+          console.log('atualizei a qtd do item de estoque:' + this.CodEstoque);
+          this.novaVenda();
         },(err: any) =>
         {
           alert(err.data);
@@ -57,21 +60,52 @@ export class Vouvender {
     );
   }
 
+  public apagaItemEstoque()
+  {
+
+    console.log('Apagando registro do MEuestoque:' + this.CodEstoque)
+    this.backand.object.remove('Estoques', this.CodEstoque).then
+    ((res: any) =>
+        {
+          this.items = res.data;
+          console.log('apaguei item de estoque:' + this.CodEstoque)
+        },(err: any) =>
+        {
+          alert(err.data);
+        }
+    );
+  }
+
+  public validaQtdEstoque()
+  {
+    let valorFinal = this.Quantidadeemestoque - this.QuantidadeEscolhida;
+    if (valorFinal == 0 )
+    {
+      console.log('valor final = 0');
+      this.apagaItemEstoque();
+      this.novaVenda();
+    }
+    else
+    {
+      console.log('valor final =' + valorFinal);
+      this.atualizaEstoques();
+    }
+  }
+
   public novaVenda()
   {
     let item =
     {
-      Produto: '',
-      Qtd: '',
-      ValorPago: '',
-      DataPagamento: '',
-      DataEntrega: '',
-      Presente: '',
-      CodProduto: '',
-      idCliente:'',
-      NomeCliente:''
+      IDEstoque: this.CodEstoque,
+      Qtd: this.QuantidadeEscolhida,
+      ValorPago: this.Preco,
+      DataPagamento: this.Datapgto,
+      DataEntrega: this.Dataentrega,
+      CodProduto: this.ProdutoParaVender,
+      idCliente: this.CodCliente,
+      NomedoCliente: this.NomeCliente
     };
-    console.log(item)
+    console.log('Cliente:' + this.NomeCliente +' ID:' + this.CodCliente)
     this.backand.object.create('Vendas',item).then
     ((res: any) =>
         {
@@ -107,32 +141,14 @@ export class Vouvender {
           text: 'Sim',
           handler: () => {
             console.log('Sim clicked');
-            this.validacaoVenda()
-          }
-        }
-      ]
-    });
-    alert.present()
-  }
-
-  validacaoVenda()
-  { let alert = this.alertCtrl.create
-    ({
-      title: 'PRÓXIMOS PASSOS',
-      subTitle: '1-A quantidade em estoque é atualizada. 2-O valor pago é registrado. 3-Se a data de entrega for futura então agenda o compromisso. 4-Envia texto RECIBO para o cliente via ZAP ou EMAIL',
-      buttons:
-      [
-        {
-          text: 'OK',
-          handler: () => {
-            console.log('aceitei o OK');
+            this.validaQtdEstoque();
+            this.enviaSMS();
             this.navCtrl.pop()
           }
         }
       ]
     });
-    alert.present();
-    this.enviaSMS();
+    alert.present()
   }
 
   addCliente()
@@ -142,14 +158,15 @@ export class Vouvender {
   ionViewDidLoad() {
 //    console.log('ionViewDidLoad Vouvender: ' + this.navParams.get('ID'));
     this.NomeCliente = this.navParams.get('Cliente');
+    this.CodCliente = this.navParams.get('CodCliente');
     this.NomedoUsuario = this.navParams.get('Usuario');
     this.CodProduto = this.navParams.get('IDProd');
-    this.IDEstoque = this.navParams.get('ID');
+    this.CodEstoque = this.navParams.get('ID');
     this.ProdutoParaVender = this.navParams.get('Produto');
     this.QuantidadeEscolhida = this.navParams.get('Qtd');
     this.Quantidadeemestoque = this.navParams.get('Qtd');
     this.Preco = this.navParams.get('Preco');
-//    console.log('Cliente: ' + this.NomeCliente + ' Usuario: ' + this.NomedoUsuario);
+    console.log('Cliente: ' + this.NomeCliente + ' Cod do Cliente: ' + this.CodCliente);
   }
 
   ionViewDidEnter() {

@@ -35,21 +35,13 @@ export class Meusclientes {
   {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Meusclientes');
-  }
-
-  ionViewDidEnter() {
-    this.getItems();
-  }
-
   public getItems()
   {
     this.backand.object.getList('Clientes').then
     ((res: any) =>
         {
           this.items = res.data;
-          console.log('itens lidos....');
+  //        console.log('itens lidos....');
         },(err: any) =>
         {
           alert(err.data);
@@ -78,7 +70,7 @@ export class Meusclientes {
             this.email="";
             this.whatsapp="";
             this.fixo="";
-            this.getItems();
+            this.closeModal(item);
           },(err: any) =>
           {
             alert(err.data);
@@ -142,7 +134,18 @@ export class Meusclientes {
     let data =
     {
       NomeCliente: infos.Nome,
+      CodCliente: infos.id
     }
     this.viewCtrl.dismiss(data);
   }
+
+  ionViewDidLoad()
+  {
+//    console.log('ionViewDidLoad Meusclientes');
+  }
+
+  ionViewDidEnter() {
+    this.getItems();
+  }
+
 }

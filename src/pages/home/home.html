@@ -29,14 +29,21 @@
 </div>
 
 <div *ngIf="NomeCliente!=' ' ; elseBlock">
-  <p>Escolhido o(a): {{NomeCliente}}. Boas vendas!</p>
+  <ion-list>
+    <p>Últimas compras do cliente: {{NomeCliente}}</p>
+    <ion-item *ngFor="let item of items" >
+      <p>{{ item.CodProduto}}</p>
+      <p>Data: {{ item.DataPagamento }}</p>
+      <p>Valor: {{ item.ValorPago }} Qtd: {{ item.Qtd }}</p>
+    </ion-item>
+  </ion-list>
 </div>
-<!--
-<ng-template #elseBlock>nome completo</ng-template>
--->
 
+<ng-template #elseBlock>nome completo</ng-template>
 
 <p>Após a escolha do cliente utilize os botões abaixo.</p>
+
+
 
 <div text-center>
   <button ion-button round color="primary" (click)="abreMeuestoque()">Meus Estoques</button>

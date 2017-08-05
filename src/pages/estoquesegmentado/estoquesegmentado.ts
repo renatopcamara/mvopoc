@@ -28,6 +28,7 @@ export class Estoquesegmentado {
   loggedInUser: string = '';
   email: string = '';
   NomeCliente: string;
+  CodCliente: string;
   NomedoUsuario: string;
 
   constructor(
@@ -70,12 +71,12 @@ export class Estoquesegmentado {
     {
       filter: this.backand.helpers.filter.create('CodUsuario', 'contains', "Rosana")
     }
-    console.log('parametros:'+params)
+//    console.log('parametros:'+params)
     this.backand.object.getList('Estoques',params).then
     ((res: any) =>
         {
           this.items = res.data;
-          console.log('Passeio no meu estoque');
+//          console.log('Passeio no meu estoque');
         },(err: any) =>
         {
           alert(err.data);
@@ -152,6 +153,7 @@ VouVender(nomeProduto)
   let data =
   {
     Cliente: this.NomeCliente,
+    CodCliente: this.CodCliente,
     Usuario: this.NomedoUsuario,
     IDProd: nomeProduto.CodProduto,
     ID: nomeProduto.id,
@@ -159,20 +161,23 @@ VouVender(nomeProduto)
     Qtd: nomeProduto.Quantidade,
     Preco: nomeProduto.Preco
   };
-//  console.log("dados que serão passado para a proxima pagina: " + data.Produto + " qtd:" + data.Qtd);
+//  console.log("Codigo do clinte: " + this.CodCliente);
   this.navCtrl.push(Vouvender, data)
 }
 
   ionViewDidEnter()
   {
-    console.log('ionViewDidLoad Estoquesegmentado');
+//    console.log('ionViewDidLoad Estoquesegmentado');
+    this.getItemsMeuEstoque();
+    this.searchQuery='';
   }
 
   ionViewDidLoad()
   {
     this.NomeCliente = this.navParams.get('Cliente');
+    this.CodCliente = this.navParams.get('CodCliente');
     this.NomedoUsuario = this.navParams.get('Usuario');
-    console.log('Load MeusEstoques: ' + this.NomedoUsuario + ' ' + this.NomeCliente);
+    console.log('Código do cliente recebido: ' + this.CodCliente);
   }
 
 }
