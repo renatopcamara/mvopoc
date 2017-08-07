@@ -10,7 +10,7 @@ export class Meusclientes {
 
   /* Campos da Tabela Estoques */
   id: number;
-  nome: string;
+  nome: string =' ';
   email: string;
   whatsapp: string;
   fixo: string;
@@ -66,7 +66,7 @@ export class Meusclientes {
           {
             console.log('salvei...');
             this.id=null;
-            this.nome="";
+            this.nome=' ';
             this.email="";
             this.whatsapp="";
             this.fixo="";
@@ -118,7 +118,7 @@ export class Meusclientes {
           {
             console.log('atualizado...');
             this.id=0;
-            this.nome="";
+            this.nome=" ";
             this.email="";
             this.whatsapp="";
             this.fixo=";"

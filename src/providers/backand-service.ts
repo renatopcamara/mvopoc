@@ -43,11 +43,10 @@ import 'rxjs/add/operator/map';
 import * as io from 'socket.io-client';
 
 /*
-
 */
 
 @Injectable()
-export class BackandService {
+export class Back_Service {
 
   private api_url: string = 'https://api.backand.com';
   private socialProviders: any = {

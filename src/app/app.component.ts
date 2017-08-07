@@ -12,6 +12,7 @@ import { Meuestoque } from '../pages/meuestoque/meuestoque';
 import { Meusclientes } from '../pages/meusclientes/meusclientes';
 import { Vouvender } from '../pages/vouvender/vouvender';
 import { Estoquesegmentado } from '../pages/estoquesegmentado/estoquesegmentado';
+import { Compartilhamento } from '../pages/compartilhamento/compartilhamento';
 
 import { BackandService } from '@backand/angular2-sdk';
 
@@ -36,11 +37,12 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage },
-      { title: 'Meus Estoques', component: Estoquesegmentado },
-      { title: 'Vou Vender', component: Vouvender },
-      { title: 'Meus Clientes', component: Meusclientes },
+//      { title: 'Meus Estoques', component: Estoquesegmentado },
+//      { title: 'Vou Vender', component: Vouvender },
+//      { title: 'Meus Clientes', component: Meusclientes },
 //      { title: 'Log In', component: Usuarios },
-      { title: 'Catálogo de Produtos', component: Produtos }
+      { title: 'Catálogo de Produtos', component: Produtos },
+      { title: 'Compartilhamentos', component: Compartilhamento }
 //      { title: 'List Page', component: ListPage}
       ];
     }

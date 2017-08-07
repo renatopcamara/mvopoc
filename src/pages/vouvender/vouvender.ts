@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
 import { Meusclientes } from '../meusclientes/meusclientes';
 import { SMS } from '@ionic-native/sms';
@@ -35,9 +35,75 @@ export class Vouvender {
     public navParams: NavParams,
     public backand: BackandService,
     public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
     private sms: SMS)
   {
 
+  }
+
+  public apagaItemEstoque()
+  {
+
+    console.log('Apagando registro do MEuestoque:' + this.CodEstoque)
+    this.backand.object.remove('Estoques', this.CodEstoque).then
+    ((res: any) =>
+        {
+          this.items = res.data;
+          console.log('apaguei item de estoque:' + this.CodEstoque)
+        },(err: any) =>
+        {
+          alert(err.data);
+        }
+    );
+  }
+
+    public enviaSMS()
+  {
+    console.log ('Passando pela função de envio de SMS')
+    this.sms.send('999971334','Olá. Isso é um teste de envio de SMS pelo MVO')
+  }
+
+  fechamentoVenda()
+  { let alert = this.alertCtrl.create
+    ({
+      title: 'ATENÇÂO',
+      subTitle: 'Os dados da venda estão corretos? Depois dessa confirmação o registro da venda não poderá ser cancelado.',
+      buttons:
+      [
+        {
+          text: 'Não',
+          role: 'cancel',
+          handler: () => {
+            console.log('Não clicked');
+          }
+        },
+        {
+          text: 'Sim',
+          handler: () => {
+            console.log('Sim clicked');
+            this.validaQtdEstoque();
+//            this.enviaSMS();
+          }
+        }
+      ]
+    });
+    alert.present()
+  }
+
+  public validaQtdEstoque()
+  {
+    let valorFinal = this.Quantidadeemestoque - this.QuantidadeEscolhida;
+    if (valorFinal == 0 )
+    {
+      console.log('valor final = 0');
+      this.apagaItemEstoque();
+      this.novaVenda();
+    }
+    else
+    {
+      console.log('valor final =' + valorFinal);
+      this.atualizaEstoques();
+    }
   }
 
   public atualizaEstoques()
@@ -60,38 +126,6 @@ export class Vouvender {
     );
   }
 
-  public apagaItemEstoque()
-  {
-
-    console.log('Apagando registro do MEuestoque:' + this.CodEstoque)
-    this.backand.object.remove('Estoques', this.CodEstoque).then
-    ((res: any) =>
-        {
-          this.items = res.data;
-          console.log('apaguei item de estoque:' + this.CodEstoque)
-        },(err: any) =>
-        {
-          alert(err.data);
-        }
-    );
-  }
-
-  public validaQtdEstoque()
-  {
-    let valorFinal = this.Quantidadeemestoque - this.QuantidadeEscolhida;
-    if (valorFinal == 0 )
-    {
-      console.log('valor final = 0');
-      this.apagaItemEstoque();
-      this.novaVenda();
-    }
-    else
-    {
-      console.log('valor final =' + valorFinal);
-      this.atualizaEstoques();
-    }
-  }
-
   public novaVenda()
   {
     let item =
@@ -109,7 +143,8 @@ export class Vouvender {
     this.backand.object.create('Vendas',item).then
     ((res: any) =>
         {
-          console.log('salvei nova venda...');
+          console.log('salvei nova venda e voltei a tela...');
+          this.navCtrl.pop()
         },(err: any) =>
         {
           alert(err.data);
@@ -117,44 +152,19 @@ export class Vouvender {
     );
   }
 
-  public enviaSMS()
-  {
-    console.log ('Passando pela função de envio de SMS')
-    this.sms.send('999971334','Olá. Isso é um teste de envio de SMS pelo MVO')
-  }
-
-  fechamentoVenda()
-  { let alert = this.alertCtrl.create
-    ({
-      title: 'ATENÇÂO',
-      subTitle: 'Os dados da venda estão corretos? Depois da confirmação a venda não poderá ser cancelada.',
-      buttons:
-      [
-        {
-          text: 'Não',
-          role: 'cancel',
-          handler: () => {
-            console.log('Não clicked');
-          }
-        },
-        {
-          text: 'Sim',
-          handler: () => {
-            console.log('Sim clicked');
-            this.validaQtdEstoque();
-            this.enviaSMS();
-            this.navCtrl.pop()
-          }
-        }
-      ]
-    });
-    alert.present()
-  }
-
   addCliente()
   {
-    this.navCtrl.push(Meusclientes)
+    let modal = this.modalCtrl.create(Meusclientes);
+    modal.onDidDismiss((data)=>
+    {
+      console.log("Vou Vender. Cliente: " + data.NomeCliente + " COD:" + data.CodCliente);
+      this.NomeCliente = data.NomeCliente;
+      this.CodCliente = data.CodCliente;
+    });
+    modal.present();
+    console.log("passei no addcliente do Vouvender");
   }
+
   ionViewDidLoad() {
 //    console.log('ionViewDidLoad Vouvender: ' + this.navParams.get('ID'));
     this.NomeCliente = this.navParams.get('Cliente');

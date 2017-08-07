@@ -11,7 +11,6 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title text-center>Vou Vender - {{NomedoUsuario}}</ion-title>
-    <ion-title text-center>Cliente: {{NomeCliente}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -57,9 +56,12 @@
 </ion-content>
 
 <ion-footer>
-  <ion-navbar color="secondary">
-    <button ion-button clear (click)="addCliente()">
+  <ion-navbar color="light">
+    <button end ion-button clear (click)="addCliente()">
         <ion-icon name="contacts"></ion-icon>
     </button>
+    <div *ngIf="NomeCliente!=' ' ; elseBlock">
+        <ion-title text-center>Cliente: {{NomeCliente}}</ion-title>
+    </div>
   </ion-navbar>
 </ion-footer>

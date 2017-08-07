@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
-import { NavController, AlertController, ActionSheetController, ModalController } from 'ionic-angular';
+import { NavController, AlertController, ActionSheetController, ModalController, LoadingController } from 'ionic-angular';
 import { BackandService } from '@backand/angular2-sdk';
-
 import { Produtos } from '../produtos/produtos';
 import { Meusclientes } from '../meusclientes/meusclientes';
 import { Vouvender } from '../vouvender/vouvender';
 import { Estoquesegmentado } from '../estoquesegmentado/estoquesegmentado';
+import { Compartilhamento } from '../compartilhamento/compartilhamento';
+
 
 @Component({
   selector: 'page-home',
@@ -33,6 +34,7 @@ DataPagamento: string = new Date().toISOString();
     public alertCtrl: AlertController,
     public actionSheetCtrl: ActionSheetController,
     public modalCtrl: ModalController,
+    public loadingCtrl: LoadingController,
     public backand: BackandService)
   {
 
@@ -103,13 +105,7 @@ DataPagamento: string = new Date().toISOString();
 
   public abreCompartilhar()
   {
-    let alert = this.alertCtrl.create
-      ({
-        title: 'Compartilhamento',
-        subTitle: 'No momento não está disponível',
-        buttons: ['OK']
-      });
-      alert.present();
+    this.navCtrl.push(Compartilhamento)
   }
 
   ionViewDidLoad()

@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content padding>
-  <p>Esse aplicativo foi desenvolvido para auxiliar os consultores HINODE no controle de seus estoques e vendas.</p>
+  <p>Aplicativo foi desenvolvido para auxiliar os consultores HINODE no controle de seus estoques e vendas.</p>
   <p></p>
 <!--
   <button ion-button block (click)="getItemsUsuarios()">Carregar Usuarios</button>
@@ -22,8 +22,10 @@
   </ion-list>
 -->
 
-<!-- <button ion-button (click)="launchModalPage()">next</button> -->
-<p>Primeiro passo: Escolha ou cadastre o cliente que voce está trabalhando clicando no botão abaixo:</p>
+<!-- <button ion-button (click)="launchProvider()">next</button>
+-->
+
+<p>Escolha o cliente que voce está trabalhando clicando no botão abaixo:</p>
 <div text-center>
 <button ion-button round color="danger" (click)="launchModalMeuscliente()">Meus Clientes</button>
 </div>
@@ -34,31 +36,28 @@
     <ion-item *ngFor="let item of items" >
       <p>{{ item.CodProduto}}</p>
       <p>Data: {{ item.DataPagamento }}</p>
-      <p>Valor: {{ item.ValorPago }} Qtd: {{ item.Qtd }}</p>
+      <p>Valor: R${{ item.ValorPago }} Quantidade:{{ item.Qtd }}</p>
     </ion-item>
   </ion-list>
-</div>
 
-<ng-template #elseBlock>nome completo</ng-template>
+  <!--
+    <button ion-button round color="secondary" (click)="abreVouvender()">Vou Vender</button>
+    <p></p>
+-->
 
-<p>Após a escolha do cliente utilize os botões abaixo.</p>
+  </div>
 
-
-
-<div text-center>
-  <button ion-button round color="primary" (click)="abreMeuestoque()">Meus Estoques</button>
-  <p></p>
-  <button ion-button round color="secondary" (click)="abreVouvender()">Vou Vender</button>
-  <p></p>
-
-  <button ion-button round color="dark" (click)="abreProdutos()">Catálogo de Produtos</button>
-  <p></p>
-  <button ion-button round icon-right color="light" (click)="abreCompartilhar()">
-  Compartilhamento
-  <ion-icon name="share"></ion-icon>
-</button>
-</div>
-
+  <p>Consulte seu estoque para iniciar as vendas.</p>
+  <div text-center>
+    <button ion-button round color="primary" (click)="abreMeuestoque()">Meus Estoques</button>
+    <p></p>
+    <button ion-button round color="dark" (click)="abreProdutos()">Catálogo de Produtos</button>
+    <p></p>
+    <button ion-button round icon-right color="light" (click)="abreCompartilhar()">
+      Compartilhamento
+    <ion-icon name="share"></ion-icon>
+    </button>
+  </div>
 </ion-content>
 
 <!--
