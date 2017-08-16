@@ -8,11 +8,11 @@
 </ion-header>
 
 <ion-content padding>
-  <p>Aplicativo foi desenvolvido para auxiliar os consultores HINODE no controle de seus estoques e vendas.</p>
-  <p></p>
-<!--
-  <button ion-button block (click)="getItemsUsuarios()">Carregar Usuarios</button>
-  <ion-list>
+<!--  <p>Este aplicativo foi desenvolvido para auxiliar os consultores HINODE no controle de seus estoques e vendas.</p>
+  <p></p> -->
+
+<!--  <button ion-button (click)="carregaVendas()">Carregar vendas</button> -->
+<!--  <ion-list>
     <ion-item>
       <ion-label>Usuario</ion-label>
       <ion-select [(ngModel)]="usuario">
@@ -25,7 +25,7 @@
 <!-- <button ion-button (click)="launchProvider()">next</button>
 -->
 
-<p>Escolha o cliente que voce está trabalhando clicando no botão abaixo:</p>
+<p>Escolha o cliente que voce está trabalhando clicando no botão abaixo.</p>
 <div text-center>
 <button ion-button round color="danger" (click)="launchModalMeuscliente()">Meus Clientes</button>
 </div>
@@ -51,8 +51,21 @@
   <div text-center>
     <button ion-button round color="primary" (click)="abreMeuestoque()">Meus Estoques</button>
     <p></p>
+  </div>
+  <p>Para consultar todos os produtos Hinode, clique no botão abaixo.</p>
+  <div text-center>
     <button ion-button round color="dark" (click)="abreProdutos()">Catálogo de Produtos</button>
     <p></p>
+  </div>
+  <p>Sua lista de desejo pode ser acessada pelo botão:</p>
+  <div text-center>
+    <button ion-button round icon-right color="secondary" (click)="abrelistaDesejo()">Lista de Desejos
+    <ion-icon name="cart"></ion-icon>
+    </button>
+    <p></p>
+  </div>
+  <p>Os consultores que voce compartilha seu estoque voce encontra no botão seguinte.</p>
+  <div text-center>
     <button ion-button round icon-right color="light" (click)="abreCompartilhar()">
       Compartilhamento
     <ion-icon name="share"></ion-icon>
@@ -60,12 +73,6 @@
   </div>
 </ion-content>
 
-<!--
 <ion-footer>
-  <ion-navbar>
-    <button ion-button clear (click)="abreEstoquesegmentado()">
-        <ion-icon name="refresh"></ion-icon>
-    </button>
-  </ion-navbar>
-
+  <ion-navbar text-center>Versão de Teste</ion-navbar>
 </ion-footer>-->

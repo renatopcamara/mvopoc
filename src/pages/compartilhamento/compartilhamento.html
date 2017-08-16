@@ -18,7 +18,29 @@
 
 <ion-content padding>
 
-<p> Página em construção. </p>
+<p>Página em construção.</p>
 <p></p>
+
 <p>Será apresentado todos os consultores que estão compartilhando seus estoques com o da Rosana.</p>
+
+<ion-list>
+
+  <ion-item>
+    <ion-label>Roberto</ion-label>
+    <ion-toggle [(ngModel)]="pepperoni" disabled="true"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Lucia</ion-label>
+    <ion-toggle [(ngModel)]="sausage" disabled="true"></ion-toggle>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Renato</ion-label>
+    <ion-toggle checked="true" [(ngModel)]="Renato" ></ion-toggle>
+  </ion-item>
+
+</ion-list>
+
+
 </ion-content>

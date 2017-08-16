@@ -24,20 +24,25 @@
     type = "text"
     (ionInput)="filterItemsProdutos($event.target.value)">
   </ion-searchbar>
-
   <ion-list>
-    <button ion-item *ngFor="let item of items" (click)="selecionaProduto()">
-      <p>Código Hinode: {{ item.CodigoHinode }}</p>
-      <p>Nome: {{ item.Nome }}</p>
-      <p>Preço: {{ item.Preco  }}</p>
-      <p>Custo: {{ item.Custo }}</p>
-      <p>Status: {{ item.Status}}</p>
-    </button>
-  </ion-list>
+    <ion-item-sliding *ngFor="let item of items" >
+      <button ion-item (click)="selecionaProduto()">
+        <p>Código Hinode: {{ item.CodigoHinode }}</p>
+        <p>Nome: {{ item.Nome }}</p>
+        <p>Preço: {{ item.Preco  }}</p>
+      </button>
+      <ion-item-options>
+        <button ion-button color="secondary" icon-start (click)="listadedesejos(item)">
+          <ion-icon name="cart"></ion-icon>
+          Desejo
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+</ion-list>
 </ion-content>
 
 <ion-footer>
-  <ion-navbar color="light"> 
+  <ion-navbar color="light">
     <button ion-button clear (click)="refreshCatalogo()">
       <ion-icon name="refresh"></ion-icon>
     </button>

@@ -11,6 +11,7 @@ import { Produtos } from '../pages/produtos/produtos';
 import { Meuestoque } from '../pages/meuestoque/meuestoque';
 import { Meusclientes } from '../pages/meusclientes/meusclientes';
 import { Vouvender } from '../pages/vouvender/vouvender';
+import { Listadedesejos } from '../pages/listadedesejos/listadedesejos';
 import { Estoquesegmentado } from '../pages/estoquesegmentado/estoquesegmentado';
 import { Compartilhamento } from '../pages/compartilhamento/compartilhamento';
 
@@ -40,9 +41,10 @@ export class MyApp {
 //      { title: 'Meus Estoques', component: Estoquesegmentado },
 //      { title: 'Vou Vender', component: Vouvender },
 //      { title: 'Meus Clientes', component: Meusclientes },
-//      { title: 'Log In', component: Usuarios },
       { title: 'Catálogo de Produtos', component: Produtos },
-      { title: 'Compartilhamentos', component: Compartilhamento }
+      { title: 'Compartilhamentos', component: Compartilhamento },
+      { title: 'Lista de Desejos', component: Listadedesejos },
+      { title: 'Log In', component: Usuarios }
 //      { title: 'List Page', component: ListPage}
       ];
     }
@@ -59,6 +61,11 @@ export class MyApp {
 
       this.backand.init
         ({
+//          appName: 'mvo',
+//          signUpToken: '26b3d69d-8f69-4719-9335-f785edc8b3de',
+//          anonymousToken: '06646723-1e1d-46a3-86c8-8a18b17f834d',
+//          runSocket: true,
+//          mobilePlatform: 'ionic'
           appName: 'mvopoc',
           signUpToken: '8efa1a4f-32d8-435c-9e49-7d54bb4991e1',
           anonymousToken: '38396332-f6e2-48d8-950c-bd6a2e4f1633',

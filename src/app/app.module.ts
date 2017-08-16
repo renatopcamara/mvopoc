@@ -13,6 +13,7 @@ import { Produtos } from '../pages/produtos/produtos';
 import { Meuestoque } from '../pages/meuestoque/meuestoque';
 import { Meusclientes } from '../pages/meusclientes/meusclientes';
 import { Vouvender } from '../pages/vouvender/vouvender';
+import { Listadedesejos } from '../pages/listadedesejos/listadedesejos';
 import { Estoquesegmentado } from '../pages/estoquesegmentado/estoquesegmentado';
 import { Compartilhamento } from '../pages/compartilhamento/compartilhamento';
 
@@ -26,12 +27,13 @@ import { BackandService } from '@backand/angular2-sdk';
   declarations: [
     MyApp,
     HomePage,
-//    Usuarios,
+    Usuarios,
     Produtos,
     Meuestoque,
     Vouvender,
     Estoquesegmentado,
     Compartilhamento,
+    Listadedesejos,
     Meusclientes
   ],
   imports: [
@@ -42,12 +44,13 @@ import { BackandService } from '@backand/angular2-sdk';
   entryComponents: [
     MyApp,
     HomePage,
-//    Usuarios,
+    Usuarios,
     Produtos,
     Meuestoque,
     Vouvender,
     Estoquesegmentado,
     Compartilhamento,
+    Listadedesejos,
     Meusclientes
   ],
   providers: [

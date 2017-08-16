@@ -6,7 +6,7 @@ import { Meusclientes } from '../meusclientes/meusclientes';
 import { Vouvender } from '../vouvender/vouvender';
 import { Estoquesegmentado } from '../estoquesegmentado/estoquesegmentado';
 import { Compartilhamento } from '../compartilhamento/compartilhamento';
-
+import { Listadedesejos } from '../listadedesejos/listadedesejos';
 
 @Component({
   selector: 'page-home',
@@ -60,6 +60,7 @@ DataPagamento: string = new Date().toISOString();
     let params =
     {
       filter: this.backand.helpers.filter.create('idCliente', 'equals', this.CodCliente),
+//      filter: this.backand.helpers.filter.create('idCliente', 'equals', '34'),
       sort: this.backand.helpers.sort.create('DataPagamento', 'desc'),
     }
 //    console.log('parametros:'+ params)
@@ -67,7 +68,7 @@ DataPagamento: string = new Date().toISOString();
     ((res: any) =>
         {
           this.items = res.data;
-  //        console.log('Passeio no carrega vendas');
+          console.log('Passeio no carrega vendas' + this.items);
         },(err: any) =>
         {
           alert(err.data);
@@ -101,6 +102,11 @@ DataPagamento: string = new Date().toISOString();
   public abreProdutos()
   {
     this.navCtrl.push(Produtos)
+  }
+
+  public abrelistaDesejo()
+  {
+    this.navCtrl.push(Listadedesejos)
   }
 
   public abreCompartilhar()
